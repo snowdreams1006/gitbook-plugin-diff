@@ -1,50 +1,50 @@
 {
-  "name": "gitbook-plugin-diff",
-  "version": "0.0.2",
-  "description": "A gitbook plugin for showing the differences between the codes within markdown",
-  "main": "index.js",
-  "engines": {
-    "gitbook": ">=2.5.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/snowdreams1006/gitbook-plugin-diff.git"
-  },
-  "keywords": [
-    "gitbook-plugin-diff",
-    "gitbook-plugin",
-    "diff",
-    "jsdiff",
-    "compare",
-    "code"
-  ],
-  "gitbook": {
-    "properties": {
-      "method": {
-        "type": "string",
-        "title": "jsdiff api method",
-        "required": false,
-        "default": "diffLines",
-        "description": "some supported methods such as diffChars or diffWords or diffWordsWithSpace or diffLines or diffTrimmedLines or diffSentences or diffCss or diffJson or diffArrays",
-      },
-      "options": {
-          "type": "object",
-          "title": "jsdiff api options",
-          "required": false,
-          "description": "some methods may not support options",
-      }
+    "name": "gitbook-plugin-diff",
+    "version": "0.0.2",
+    "description": "A gitbook plugin for showing the differences between the codes within markdown",
+    "main": "index.js",
+    "engines": {
+        "gitbook": ">=2.5.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/snowdreams1006/gitbook-plugin-diff.git"
+    },
+    "keywords": [
+        "gitbook-plugin-diff",
+        "gitbook-plugin",
+        "diff",
+        "jsdiff",
+        "compare",
+        "code"
+    ],
+    "gitbook": {
+        "properties": {
+            "method": {
+                "type": "string",
+                "title": "jsdiff api method",
+                "required": false,
+                "default": "diffLines",
+                "description": "some supported methods such as diffChars or diffWords or diffWordsWithSpace or diffLines or diffTrimmedLines or diffSentences or diffCss or diffJson or diffArrays"
+            },
+            "options": {
+                "type": "object",
+                "title": "jsdiff api options",
+                "required": false,
+                "description": "some methods may not support options"
+            }
+        }
+    },
+    "author": {
+        "name": "snowdreams1006",
+        "email": "snowdreams1006@163.com"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/snowdreams1006/gitbook-plugin-diff/issues"
+    },
+    "homepage": "https://github.com/snowdreams1006/gitbook-plugin-diff#readme",
+    "dependencies": {
+        "diff": "^4.0.2"
     }
-  },
-  "author": {
-    "name": "snowdreams1006",
-    "email": "snowdreams1006@163.com"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/snowdreams1006/gitbook-plugin-diff/issues"
-  },
-  "homepage": "https://github.com/snowdreams1006/gitbook-plugin-diff#readme",
-  "dependencies": {
-    "diff": "^4.0.2"
-  }
 }
