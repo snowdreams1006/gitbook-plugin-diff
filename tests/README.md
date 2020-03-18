@@ -14,6 +14,16 @@ console.log('OMG Rainbows!'.rainbow); // rainbow
 console.log('Run the trap'.trap); // Drops the bass
 ```
 
+```js
+var colors = require('colors/safe');
+
+console.log(colors.green('hello')); // outputs green text
+console.log(colors.red.underline('i like cake and pies')); // outputs red underlined text
+console.log(colors.inverse('inverse the color')); // inverses the color
+console.log(colors.rainbow('OMG Rainbows!')); // rainbow
+console.log(colors.trap('Run the trap')); // Drops the bass
+```
+
 - [https://github.com/kpdecker/jsdiff](https://github.com/kpdecker/jsdiff)
 
 ```js

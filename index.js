@@ -79,13 +79,21 @@ module.exports = {
                         break; 
                     case "diffJson":
                         options = Object.assign({}, (options || {}),{"ignoreCase":false,"newlineIsToken":false});
-                        oldArr = JSON.parse(oldArr);
-                        newArr = JSON.parse(newArr);
+                        if(Object.prototype.toString.call(oldStr) === '[object String]'){
+                            oldStr = JSON.parse(oldStr);
+                        }
+                        if(Object.prototype.toString.call(newArr) === '[object String]'){
+                            newArr = JSON.parse(newArr);
+                        }
                         diff = Diff.diffJson(oldArr, newArr,options);
                         break;
                     case "diffArrays":
-                        oldArr = JSON.parse(oldArr);
-                        newArr = JSON.parse(newArr);
+                        if(Object.prototype.toString.call(oldStr) === '[object String]'){
+                            oldStr = JSON.parse(oldStr);
+                        }
+                        if(Object.prototype.toString.call(newArr) === '[object String]'){
+                            newArr = JSON.parse(newArr);
+                        }
                         diff = Diff.diffArrays(oldArr, newArr);
                         break; 
                 }
