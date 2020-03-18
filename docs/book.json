@@ -15,7 +15,8 @@
         "readmore",
         "copyright",
         "mygitalk",
-        "icp"
+        "icp",
+        "diff"
     ],
     "pluginsConfig": {
         "favicon-absolute": {
@@ -57,8 +58,8 @@
         },
         "copyright": {
             "site": "https://snowdreams1006.github.io/gitbook-plugin-diff",
-            "author": "雪之梦技术驿站",
-            "website": "雪之梦技术驿站",
+            "author": "snowdreams1006",
+            "website": "snowdreams1006.tech",
             "image": "https://snowdreams1006.github.io/snowdreams1006-wechat-open.png"
         },
         "mygitalk": {
@@ -70,6 +71,9 @@
             "distractionFreeMode": false
         },
         "icp": {
+            "number": "浙ICP备18042346号"
+        },
+        "diff": {
             "number": "浙ICP备18042346号"
         }
     }
