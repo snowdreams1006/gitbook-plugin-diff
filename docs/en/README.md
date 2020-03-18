@@ -372,6 +372,7 @@ Returns a list of change objects (See below).
   "description": "A gitBook plugin for generating and exporting mind map within markdown"
 }
 ```
+
 ```json
 {
   "name": "gitbook-plugin-diff",
@@ -392,6 +393,7 @@ Returns a list of change objects (See below).
   "description": "A gitBook plugin for generating and exporting mind map within markdown"
 }
 ```
+
 ```json
 {
   "name": "gitbook-plugin-diff",
@@ -433,6 +435,7 @@ Returns a list of change objects (See below).
     "小程序"
 ]
 ```
+
 ```json
 [
     "Vuejs",
@@ -462,6 +465,7 @@ Returns a list of change objects (See below).
     "小程序"
 ]
 ```
+
 ```json
 [
     "Vuejs",
