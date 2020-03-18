@@ -107,6 +107,52 @@ beep boob blah
 ```
 {% enddiff %}
 
+### `Diff.diffWordsWithSpace(oldStr, newStr[, options])`
+
+> diffs two blocks of text, comparing word by word, treating whitespace as significant.
+
+**Return**
+
+Returns a list of change objects (See below).
+
+**Option**
+
+- `ignoreCase`: Same as in `diffWords`.
+
+**Examples**
+
+- usage 
+
+> set `method="diffWordsWithSpace"` to call `Diff.diffWordsWithSpace(oldStr, newStr[, options])` method
+
+````markdown
+{% diff method="diffWordsWithSpace" %}
+```bash
+beep boop
+```
+
+```bash
+beep boob blah
+```
+{% enddiff %}
+````
+
+- preview 
+
+{% diff method="diffWordsWithSpace" %}
+```bash
+beep boop
+```
+
+```bash
+beep boob blah
+```
+{% enddiff %}
+
+
+
+
+
 
 {% diff method="diffTrimmedLines" %}
 ```js
