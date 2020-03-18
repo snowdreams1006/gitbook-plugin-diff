@@ -1,6 +1,6 @@
 {
   "name": "gitbook-plugin-diff",
-  "version": "0.0.1",
+  "version": "0.0.2-0",
   "description": "A gitbook plugin for showing the differences between the codes within markdown",
   "main": "index.js",
   "engines": {
