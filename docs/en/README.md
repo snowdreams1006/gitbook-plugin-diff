@@ -149,21 +149,153 @@ beep boob blah
 ```
 {% enddiff %}
 
+### `Diff.diffLines(oldStr, newStr[, options])`
 
+> diffs two blocks of text, comparing line by line.
 
+**Return**
 
+Returns a list of change objects (See below).
 
+**Option**
 
-{% diff method="diffTrimmedLines" %}
-```js
-var one = 'beep boop';
+- `ignoreWhitespace`: `true` to ignore leading and trailing whitespace. This is the same as `diffTrimmedLines`
+- `newlineIsToken`: `true` to treat newline characters as separate tokens.  This allows for changes to the newline structure to occur independently of the line content and to be treated as such. In general this is the more human friendly form of `diffLines` and `diffLines` is better suited for patches and other computer friendly output.
+
+**Examples**
+
+- usage 
+
+> set `method="diffLines"` to call `Diff.diffLines(oldStr, newStr[, options])` method
+
+````markdown
+{% diff method="diffLines",options={"newlineIsToken":true} %}
+```bash
+beep boop
+the cat is palying with cap
+what
 ```
 
-```js
-var other = 'beep boob blah';
+```bash
+beep boob blah
+the cat is palying with cat
+who
+```
+{% enddiff %}
+````
+
+- preview 
+
+{% diff method="diffLines",options={"newlineIsToken":true} %}
+```bash
+beep boop
+the cat is palying with cap
+what
+```
+
+```bash
+beep boob blah
+the cat is palying with cat
+who
 ```
 {% enddiff %}
 
+### `Diff.diffTrimmedLines(oldStr, newStr[, options])`
+
+> diffs two blocks of text, comparing line by line, ignoring leading and trailing whitespace.
+
+**Return**
+
+Returns a list of change objects (See below).
+
+**Option**
+
+- `ignoreWhitespace`: Same as in `diffLines`.
+- `newlineIsToken`: Same as in `diffLines`.
+
+**Examples**
+
+- usage 
+
+> set `method="diffTrimmedLines"` to call `Diff.diffTrimmedLines(oldStr, newStr[, options])` method
+
+````markdown
+{% diff method="diffTrimmedLines",options={"newlineIsToken":true} %}
+```bash
+beep boop
+the cat is palying with cap
+what
+```
+
+```bash
+beep boob blah
+the cat is palying with cat
+who
+```
+{% enddiff %}
+````
+
+- preview 
+
+{% diff method="diffTrimmedLines",options={"newlineIsToken":true} %}
+```bash
+beep boop
+the cat is palying with cap
+what
+```
+
+```bash
+beep boob blah
+the cat is palying with cat
+who
+```
+{% enddiff %}
+
+### `Diff.diffSentences(oldStr, newStr[, options])`
+
+> diffs two blocks of text, comparing sentence by sentence.
+
+**Return**
+
+Returns a list of change objects (See below).
+
+**Examples**
+
+- usage 
+
+> set `method="diffSentences"` to call `Diff.diffSentences(oldStr, newStr[, options])` method
+
+````markdown
+{% diff method="diffSentences" %}
+```bash
+beep boop
+the cat is palying with cap
+what
+```
+
+```bash
+beep boob blah
+the cat is palying with cat
+who
+```
+{% enddiff %}
+````
+
+- preview 
+
+{% diff method="diffSentences" %}
+```bash
+beep boop
+the cat is palying with cap
+what
+```
+
+```bash
+beep boob blah
+the cat is palying with cat
+who
+```
+{% enddiff %}
 
 {% diff method="diffJson" %}
 ```json
