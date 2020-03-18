@@ -22,40 +22,122 @@
 
 ## Screenshot
 
-````js
-{% diff %}
+### `Diff.diffChars(oldStr, newStr[, options])`
+
+> diffs two blocks of text, comparing character by character.
+
+**Return**
+
+Returns a list of change objects (See below).
+
+**Option**
+
+- `ignoreCase`: `true` to ignore casing difference. Defaults to `false`.
+
+**Examples**
+
+- usage 
+
+> set `method="diffChars"` to call `Diff.diffChars(oldStr, newStr[, options])` method
+
+````markdown
+{% diff method="diffChars" %}
 ```js
-var one = 'beep boop';
+cat
 ```
+
 ```js
-var other = 'beep boob blah';
+cap
 ```
 {% enddiff %}
 ````
 
-{% diff %}
+- preview 
+
+{% diff method="diffChars" %}
 ```js
-var one = 'beep boop';
+cat
 ```
+
 ```js
-var other = 'beep boob blah';
+cap
 ```
 {% enddiff %}
+
+
+### `Diff.diffWords(oldStr, newStr[, options])`
+
+> diffs two blocks of text, comparing word by word, ignoring whitespace.
+
+**Return**
+
+Returns a list of change objects (See below).
+
+**Option**
+
+- `ignoreCase`: Same as in `diffChars`.
+
+**Examples**
+
+- usage 
+
+> set `method="diffWords"` to call `Diff.diffWords(oldStr, newStr[, options])` method
+
+````markdown
+{% diff method="diffWords" %}
+```bash
+beep boop
+```
+
+```bash
+beep boob blah
+```
+{% enddiff %}
+````
+
+- preview 
+
+{% diff method="diffWords" %}
+```bash
+beep boop
+```
+
+```bash
+beep boob blah
+```
+{% enddiff %}
+
 
 {% diff method="diffTrimmedLines" %}
 ```js
 var one = 'beep boop';
 ```
+
 ```js
 var other = 'beep boob blah';
 ```
 {% enddiff %}
 
-```diff
-beep boop
-beep boob blah
-beep boopb blah
+
+{% diff method="diffJson" %}
+```json
+{
+  "name": "gitbook-plugin-simple-mind-map",
+  "version": "0.2.1",
+  "description": "A gitBook plugin for generating and exporting mind map within markdown"
+}
 ```
+```json
+{
+  "name": "gitbook-plugin-diff",
+  "version": "0.0.1",
+  "description": "A gitbook plugin for showing the differences between the codes within markdown"
+}
+```
+{% enddiff %}
+
+
+
 
 ``` diff
   webpack-demo

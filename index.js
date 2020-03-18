@@ -46,13 +46,13 @@ module.exports = {
                 var oldArr = textArr[0];
                 var newArr = textArr[1];
                 
-                var showDiffCode = "",diff;
+                var showDiffCode = "\n",diff;
                 switch (method) {
                     case "diffChars":
                         options = Object.assign({}, (options || {}),{"ignoreCase":false});
                         diff = Diff.diffChars(oldArr, newArr,options);
                         diff.forEach(function(part){
-                            var modifier = part.added ? "+ " : part.removed ? "- " : " ";
+                            var modifier = part.added ? "+ " : part.removed ? "- " : "  ";
                             showDiffCode += modifier + part.value + '\n';
                         });
                       break; 
@@ -60,7 +60,7 @@ module.exports = {
                         options = Object.assign({}, (options || {}),{"ignoreCase":false});
                         diff = Diff.diffWords(oldArr, newArr,options);
                         diff.forEach(function(part){
-                            var modifier = part.added ? "+ " : part.removed ? "- " : " ";
+                            var modifier = part.added ? "+ " : part.removed ? "- " : "  ";
                             showDiffCode += modifier + part.value + '\n';
                         });
                         break; 
@@ -126,7 +126,7 @@ module.exports = {
                         break; 
                 }
 
-                var markdownCode = '```diff\n'+(showDiffCode)+'\n```';
+                var markdownCode = '```diff'+(showDiffCode)+'```';
                 return new Promise(resolve => {
                     resolve(this.book.renderBlock('markdown', markdownCode) .then(function(html) {
                         return html;
