@@ -46,5 +46,8 @@
     "homepage": "https://github.com/snowdreams1006/gitbook-plugin-diff#readme",
     "dependencies": {
         "diff": "^4.0.2"
+    },
+    "devDependencies": {
+        "colors": "^1.4.0"
     }
 }
