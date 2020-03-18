@@ -349,7 +349,40 @@ Returns a list of change objects (See below).
 ```
 {% enddiff %}
 
+### `Diff.diffJson(oldObj, newObj[, options])`
 
+> diffs two JSON objects, comparing the fields defined on each. The order of fields, etc does not matter in this comparison.
+
+**Return**
+
+Returns a list of change objects (See below).
+
+**Examples**
+
+- usage 
+
+> set `method="diffJson"` to call `Diff.diffJson(oldObj, newObj[, options])` method
+
+````markdown
+{% diff method="diffJson" %}
+```json
+{
+  "name": "gitbook-plugin-simple-mind-map",
+  "version": "0.2.1",
+  "description": "A gitBook plugin for generating and exporting mind map within markdown"
+}
+```
+```json
+{
+  "name": "gitbook-plugin-diff",
+  "version": "0.0.1",
+  "description": "A gitbook plugin for showing the differences between the codes within markdown"
+}
+```
+{% enddiff %}
+````
+
+- preview 
 
 {% diff method="diffJson" %}
 ```json
@@ -367,6 +400,83 @@ Returns a list of change objects (See below).
 }
 ```
 {% enddiff %}
+
+### `Diff.diffArrays(oldArr, newArr[, options])`
+
+> diffs two arrays, comparing each item for strict equality (===).
+
+**Return**
+
+Returns a list of change objects (See below).
+
+**Options**
+
+- `comparator`: `function(left, right)` for custom equality checks
+
+**Examples**
+
+- usage 
+
+> set `method="diffArrays"` to call `Diff.diffArrays(oldArr, newArr[, options])` method
+
+````markdown
+{% diff method="diffArrays" %}
+```json
+[
+    "Vue",
+    "Python",
+    "Java",
+    "flutter",
+    "springboot",
+    "docker",
+    "React",
+    "小程序"
+]
+```
+```json
+[
+    "Vuejs",
+    "Nodejs",
+    "Java",
+    "flutter",
+    "springboot",
+    "docker",
+    "React"
+]
+```
+{% enddiff %}
+````
+
+- preview 
+
+{% diff method="diffArrays" %}
+```json
+[
+    "Vue",
+    "Python",
+    "Java",
+    "flutter",
+    "springboot",
+    "docker",
+    "React",
+    "小程序"
+]
+```
+```json
+[
+    "Vuejs",
+    "Nodejs",
+    "Java",
+    "flutter",
+    "springboot",
+    "docker",
+    "React"
+]
+```
+{% enddiff %}
+
+
+
 
 
 
