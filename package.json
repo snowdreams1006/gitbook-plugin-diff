@@ -18,6 +18,23 @@
     "compare",
     "code"
   ],
+  "gitbook": {
+    "properties": {
+      "method": {
+        "type": "string",
+        "title": "jsdiff api method",
+        "required": false,
+        "default": "diffLines",
+        "description": "some supported methods such as diffChars or diffWords or diffWordsWithSpace or diffLines or diffTrimmedLines or diffSentences or diffCss or diffJson or diffArrays",
+      },
+      "options": {
+          "type": "object",
+          "title": "jsdiff api options",
+          "required": false,
+          "description": "some methods may not support options",
+      }
+    }
+  },
   "author": {
     "name": "snowdreams1006",
     "email": "snowdreams1006@163.com"
@@ -28,7 +45,6 @@
   },
   "homepage": "https://github.com/snowdreams1006/gitbook-plugin-diff#readme",
   "dependencies": {
-    "colors": "^1.4.0",
     "diff": "^4.0.2"
   }
 }

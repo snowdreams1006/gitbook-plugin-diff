@@ -9,52 +9,60 @@
  *  - Create Time: 2020-03-15
  */
 
-var colors = require('colors');
 var Diff = require('diff');
 
 module.exports = {
-    book: {
-        assets: "./dist",
-        js: ["bundle.js"],
-    },
     blocks: {
-        simplemindmap: {
+        diff: {
             process: function process(block) {
-                var one = 'beep boop';
-                var other = 'beep boob blah';
+                // one =  [
+                //         "Vue",
+                //         "Python",
+                //         "Java",
+                //         "flutter",
+                //         "springboot",
+                //         "docker",
+                //         "React",
+                //         "小程序"
+                // ];
+                // other = [
+                //         "Vuejs",
+                //         "Python",
+                //         "Js",
+                //         "flutter",
+                //         "springboot",
+                //         "docker",
+                //         "React"
+                // ];
 
-                var diff = Diff.diffChars(one, other);
+                // console.log("diffArrays:one<-->other");
+                // console.log(one);
+                // console.log(other);
+                // console.log();
+
+                // // diffArrays
+                // showDiffCode = [];
+                // diff = Diff.diffArrays(one, other);
                 // console.log(diff);
+                // diff.forEach(function(part){
+                //     var color = part.added ? '+' :
+                //     part.removed ? '-' : '';
 
-                diff.forEach(function(part){
-                    // console.log(part);
+                //     var value = [];
+                //     part.value.forEach(function(item){
+                //         value.push(color+item);
+                //     });
+                //     showDiffCode = showDiffCode.concat(value);
+                // });
+                // console.log("diffArrays");
+                // console.log(showDiffCode);
+                // console.log();
 
-                  // green for additions, red for deletions
-                  // grey for common parts
-                  var color = part.added ? 'green' :
-                    part.removed ? 'red' : 'grey';
-                  process.stderr.write(part.value[color]);
-                });
+                var pluginConfig = this.options.pluginsConfig["diff"] || {};
+                var blockConfig = block || {};
+                var rawBody = block.body;
+                console.log(rawBody);
 
-                console.log();
-
-
-
-
-
-
-                // var pluginConfig = this.options.pluginsConfig["simple-mind-map"] || {};
-                // var blockConfig = block || {};
-                // var styleConfig = Object.assign({},(pluginConfig.style || {}), (blockConfig.kwargs.style || {}));
-                // var customStyle = '';
-                // if(styleConfig){
-                //     for (var style in styleConfig) { 
-                //         if (Object.prototype.hasOwnProperty.call(styleConfig, style)) { 
-                //             customStyle += style + ": " + styleConfig[style] + ";";
-                //         }
-                //     }
-                // }
-                // var rawBody = block.body;
                 // var result,type,text;
                 // if ((result = regex.exec(rawBody)) !== null) {
                 //     type = result[1];
@@ -63,54 +71,40 @@ module.exports = {
                 //     }
                 //     text = escapeHTML(JSON.stringify(result[2]));
                 // }
-                // var pluginType = pluginConfig.type;
-                // var blockType = blockConfig.kwargs.type;
-                // if(blockType){
-                //     type = blockType;
-                // }else{
-                //     if(!type){
-                //         type = pluginType;
-                //     }
-                // }
-                // block.body = '<svg class="simple-mind-map" style="'+(customStyle)+'" data-lang-type="'+(type)+'" data-plugin-config="'+(escapeHTML(JSON.stringify(pluginConfig)))+'" data-block-config="'+(escapeHTML(JSON.stringify(blockConfig)))+'" data-svg-text="'+(text)+'"></svg>';
-                return block;
+
+                var pluginMethod = pluginConfig.method || "diffLines";
+                var blockMethod = blockConfig.kwargs.method;
+                if(!blockMethod){
+                    blockMethod = pluginMethod;
+                }
+
+                // 新字符串相对于旧字符串发生了哪些改变
+                var oldArr = 'beep boop';
+                var newArr = 'beep boob blah';
+
+                // 支持方法:diffChars diffWords diffWordsWithSpace diffLines diffTrimmedLines diffSentences diffCss
+                // diffJson diffArrays
+
+                // diffChars
+                var showDiffCode = "";
+                var diff = Diff.diffChars(one, other);
+                diff.forEach(function(part){
+                    var modifier = part.added ? "+" : part.removed ? "-" : "";
+                    showDiffCode += modifier + part.value + '\n';
+                });
+                console.log("diffChars");
+                console.log(showDiffCode);
+                console.log();
+
+                var markdownCode = '```diff\n'+(showDiffCode)+'\n```';
+                return new Promise(resolve => {
+                    resolve(this.book.renderBlock('markdown', markdownCode) .then(function(html) {
+                        return html;
+                    }));
+                }).then(res => {
+                    return res;
+                });
             }
         }
     }
 };
-
-
-
-
-// module.exports = {
-//     hooks: {
-//         "init": function() {
-//             this.log.debug.ln('init', this.options.pluginsConfig['diff']);
-//         },
-//         "finish": function() {
-//             this.log.debug.ln('finish', this.options.pluginsConfig['diff']);
-//         }
-//     }
-// };
-
-// var colors = require('colors');
-
-// console.log('hello'.green); // outputs green text
-// console.log('i like cake and pies'.underline.red); // outputs red underlined text
-// console.log('inverse the color'.inverse); // inverses the color
-// console.log('OMG Rainbows!'.rainbow); // rainbow
-// console.log('Run the trap'.trap); // Drops the bass
-
-// var colors = require('colors/safe');
-
-// console.log(colors.green('hello')); // outputs green text
-// console.log(colors.red.underline('i like cake and pies')); // outputs red underlined text
-// console.log(colors.inverse('inverse the color')); // inverses the color
-// console.log(colors.rainbow('OMG Rainbows!')); // rainbow
-// console.log(colors.trap('Run the trap')); // Drops the bass
-
-// var colors = require('colors/safe');
-
-// var name = 'Marak';
-// console.log(colors.green('Hello %s'), name);
-// outputs -> 'Hello Marak'
