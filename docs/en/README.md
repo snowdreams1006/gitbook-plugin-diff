@@ -297,6 +297,60 @@ who
 ```
 {% enddiff %}
 
+### `Diff.diffCss(oldStr, newStr[, options])`
+
+> diffs two blocks of text, comparing CSS tokens.
+
+**Return**
+
+Returns a list of change objects (See below).
+
+**Examples**
+
+- usage 
+
+> set `method="diffCss"` to call `Diff.diffCss(oldStr, newStr[, options])` method
+
+````markdown
+{% diff method="diffCss" %}
+```css
+.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
+    margin-top: 1.275em;
+    margin-bottom: .85em;
+    font-weight: 700;
+}
+```
+
+```css
+.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+```
+{% enddiff %}
+````
+
+- preview 
+
+{% diff method="diffCss" %}
+```css
+.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
+    margin-top: 1.275em;
+    margin-bottom: .85em;
+    font-weight: 700;
+}
+```
+
+```css
+.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+```
+{% enddiff %}
+
+
+
 {% diff method="diffJson" %}
 ```json
 {
