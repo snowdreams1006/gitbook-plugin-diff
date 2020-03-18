@@ -22,6 +22,17 @@
 
 ## Screenshot
 
+````js
+{% diff %}
+```js
+var one = 'beep boop';
+```
+```js
+var other = 'beep boob blah';
+```
+{% enddiff %}
+````
+
 - multilingual
 
 ![diff-multilingual-index-use-preview.png](./diff-multilingual-index-use-preview.png)
