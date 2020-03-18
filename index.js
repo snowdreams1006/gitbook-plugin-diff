@@ -51,80 +51,48 @@ module.exports = {
                     case "diffChars":
                         options = Object.assign({}, (options || {}),{"ignoreCase":false});
                         diff = Diff.diffChars(oldArr, newArr,options);
-                        diff.forEach(function(part){
-                            var modifier = part.added ? "+ " : part.removed ? "- " : "  ";
-                            showDiffCode += modifier + part.value + '\n';
-                        });
                       break; 
                     case "diffWords":
                         options = Object.assign({}, (options || {}),{"ignoreCase":false});
                         diff = Diff.diffWords(oldArr, newArr,options);
-                        diff.forEach(function(part){
-                            var modifier = part.added ? "+ " : part.removed ? "- " : "  ";
-                            showDiffCode += modifier + part.value + '\n';
-                        });
                         break; 
                     case "diffWordsWithSpace":
                         options = Object.assign({}, (options || {}),{"ignoreCase":false});
                         diff = Diff.diffWordsWithSpace(oldArr, newArr,options);
-                        diff.forEach(function(part){
-                            var modifier = part.added ? "+ " : part.removed ? "- " : " ";
-                            showDiffCode += modifier + part.value + '\n';
-                        });
                         break; 
                     case "diffLines":
+                        // TODO
                         options = Object.assign({}, (options || {}),{"ignoreCase":false,"newlineIsToken":false});
                         diff = Diff.diffLines(oldArr, newArr,options);
-                        diff.forEach(function(part){
-                            var modifier = part.added ? "+ " : part.removed ? "- " : " ";
-                            showDiffCode += modifier + part.value + '\n';
-                        });
                         break; 
                     case "diffTrimmedLines":
                         options = Object.assign({}, (options || {}),{"ignoreCase":false,"newlineIsToken":false});
                         diff = Diff.diffTrimmedLines(oldArr, newArr,options);
-                        diff.forEach(function(part){
-                            var modifier = part.added ? "+ " : part.removed ? "- " : " ";
-                            showDiffCode += modifier + part.value + '\n';
-                        });
                         break; 
                     case "diffSentences":
                         options = Object.assign({}, (options || {}),{"ignoreCase":false,"newlineIsToken":false});
                         diff = Diff.diffSentences(oldArr, newArr,options);
-                        diff.forEach(function(part){
-                            var modifier = part.added ? "+ " : part.removed ? "- " : " ";
-                            showDiffCode += modifier + part.value + '\n';
-                        });
                         break; 
                     case "diffCss":
                         options = Object.assign({}, (options || {}),{"ignoreCase":false,"newlineIsToken":false});
                         diff = Diff.diffCss(oldArr, newArr,options);
-                        diff.forEach(function(part){
-                            var modifier = part.added ? "+ " : part.removed ? "- " : " ";
-                            showDiffCode += modifier + part.value + '\n';
-                        });
                         break; 
                     case "diffJson":
                         options = Object.assign({}, (options || {}),{"ignoreCase":false,"newlineIsToken":false});
+                        oldArr = JSON.parse(oldArr);
+                        newArr = JSON.parse(newArr);
                         diff = Diff.diffJson(oldArr, newArr,options);
-                        diff.forEach(function(part){
-                            var modifier = part.added ? "+ " : part.removed ? "- " : " ";
-                            showDiffCode += modifier + part.value + '\n';
-                        });
                         break;
                     case "diffArrays":
-                        showDiffCode = [];
+                        oldArr = JSON.parse(oldArr);
+                        newArr = JSON.parse(newArr);
                         diff = Diff.diffArrays(oldArr, newArr);
-                        diff.forEach(function(part){
-                            var modifier = part.added ? "+ " : part.removed ? "- " : " ";
-                            var valueArr = [];
-                            part.value.forEach(function(item){
-                                valueArr.push(modifier + item + '\n');
-                            });
-                            showDiffCode = showDiffCode.concat(valueArr);
-                        });
                         break; 
                 }
+                diff.forEach(function(part){
+                    var modifier = part.added ? "+ " : part.removed ? "- " : " ";
+                    showDiffCode += modifier + part.value + '\n';
+                });
 
                 var markdownCode = '```diff'+(showDiffCode)+'```';
                 return new Promise(resolve => {
