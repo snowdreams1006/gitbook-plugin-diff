@@ -42,21 +42,20 @@ var other = 'beep boob blah';
 ```
 {% enddiff %}
 
+{% diff method="diffTrimmedLines" %}
+```js
+var one = 'beep boop';
+```
+```js
+var other = 'beep boob blah';
+```
+{% enddiff %}
+
 ```diff
 beep boop
 beep boob blah
 beep boopb blah
 ```
-
-```diff
-beep boopb blah
-
-beep boob blah
-```
-
-beep boop
-
-beep boob blah
 
 ``` diff
   webpack-demo
