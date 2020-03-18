@@ -33,6 +33,37 @@ var other = 'beep boob blah';
 {% enddiff %}
 ````
 
+{% diff %}
+```js
+var one = 'beep boop';
+```
+```js
+var other = 'beep boob blah';
+```
+{% enddiff %}
+
+```diff
+beep boop
+beep boob blah
+beep boopb blah
+```
+
+```diff
+beep boopb blah
+
+beep boob blah
+```
+
+beep boop
+
+``` diff
+  webpack-demo
+  |- package.json
++ |- index.html
++ |- /src
++   |- index.js
+```
+
 - multilingual
 
 ![diff-multilingual-index-use-preview.png](./diff-multilingual-index-use-preview.png)
