@@ -86,7 +86,7 @@ Returns a list of change objects (See below).
 ````markdown
 {% diff method="diffWords" %}
 ```bash
-beep boop
+beep boop  
 ```
 
 ```bash
@@ -128,7 +128,7 @@ Returns a list of change objects (See below).
 ````markdown
 {% diff method="diffWordsWithSpace" %}
 ```bash
-beep boop
+beep boop  
 ```
 
 ```bash
@@ -178,7 +178,7 @@ what
 
 ```bash
 beep boob blah
-the cat is palying with cat
+the cat is palying with cap
 who
 ```
 {% enddiff %}
@@ -195,7 +195,7 @@ what
 
 ```bash
 beep boob blah
-the cat is palying with cat
+the cat is palying with cap
 who
 ```
 {% enddiff %}
@@ -292,7 +292,7 @@ what
 
 ```bash
 beep boob blah
-the cat is palying with cat
+the cat is palying with cap
 who
 ```
 {% enddiff %}
@@ -376,7 +376,7 @@ Returns a list of change objects (See below).
 ```json
 {
   "name": "gitbook-plugin-diff",
-  "version": "0.0.1",
+  "version": "0.2.1",
   "description": "A gitbook plugin for showing the differences between the codes within markdown"
 }
 ```
@@ -397,7 +397,7 @@ Returns a list of change objects (See below).
 ```json
 {
   "name": "gitbook-plugin-diff",
-  "version": "0.0.1",
+  "version": "0.2.1",
   "description": "A gitbook plugin for showing the differences between the codes within markdown"
 }
 ```
