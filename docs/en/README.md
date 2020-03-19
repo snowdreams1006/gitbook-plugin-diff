@@ -31,7 +31,6 @@
   "description": "A gitBook plugin for generating and exporting mind map within markdown"
 }
 ```
-
 ```json
 {
   "name": "gitbook-plugin-diff",
@@ -52,7 +51,6 @@
   "description": "A gitBook plugin for generating and exporting mind map within markdown"
 }
 ```
-
 ```json
 {
   "name": "gitbook-plugin-diff",
@@ -109,7 +107,6 @@ Here is basic grammar in your markdown file :
 ```
 old code
 ```
-
 ```
 new code
 ```
@@ -141,7 +138,6 @@ Returns a list of change objects (See below).
 ```js
 cat
 ```
-
 ```js
 cap
 ```
@@ -154,7 +150,6 @@ cap
 ```js
 cat
 ```
-
 ```js
 cap
 ```
@@ -181,9 +176,8 @@ Returns a list of change objects (See below).
 ````markdown
 {% diff method="diffWords" %}
 ```bash
-beep boop  
+beep boop
 ```
-
 ```bash
 beep boob blah
 ```
@@ -196,7 +190,6 @@ beep boob blah
 ```bash
 beep boop
 ```
-
 ```bash
 beep boob blah
 ```
@@ -225,7 +218,6 @@ Returns a list of change objects (See below).
 ```bash
 beep boop  
 ```
-
 ```bash
 beep boob blah
 ```
@@ -238,7 +230,6 @@ beep boob blah
 ```bash
 beep boop
 ```
-
 ```bash
 beep boob blah
 ```
@@ -270,7 +261,6 @@ beep boop
 the cat is palying with cap
 what
 ```
-
 ```bash
 beep boob blah
 the cat is palying with cap
@@ -287,7 +277,6 @@ beep boop
 the cat is palying with cap
 what
 ```
-
 ```bash
 beep boob blah
 the cat is palying with cap
@@ -321,7 +310,6 @@ beep boop
 the cat is palying with cap
 what
 ```
-
 ```bash
 beep boob blah
 the cat is palying with cat
@@ -338,7 +326,6 @@ beep boop
 the cat is palying with cap
 what
 ```
-
 ```bash
 beep boob blah
 the cat is palying with cat
@@ -367,7 +354,6 @@ beep boop
 the cat is palying with cap
 what
 ```
-
 ```bash
 beep boob blah
 the cat is palying with cat
@@ -384,7 +370,6 @@ beep boop
 the cat is palying with cap
 what
 ```
-
 ```bash
 beep boob blah
 the cat is palying with cap
@@ -415,7 +400,6 @@ Returns a list of change objects (See below).
     font-weight: 700;
 }
 ```
-
 ```css
 .markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
     margin-top: 1.5em;
@@ -435,7 +419,6 @@ Returns a list of change objects (See below).
     font-weight: 700;
 }
 ```
-
 ```css
 .markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
     margin-top: 1.5em;
@@ -467,7 +450,6 @@ Returns a list of change objects (See below).
   "description": "A gitBook plugin for generating and exporting mind map within markdown"
 }
 ```
-
 ```json
 {
   "name": "gitbook-plugin-diff",
@@ -488,7 +470,6 @@ Returns a list of change objects (See below).
   "description": "A gitBook plugin for generating and exporting mind map within markdown"
 }
 ```
-
 ```json
 {
   "name": "gitbook-plugin-diff",
@@ -530,7 +511,6 @@ Returns a list of change objects (See below).
     "小程序"
 ]
 ```
-
 ```json
 [
     "Vuejs",
@@ -560,7 +540,6 @@ Returns a list of change objects (See below).
     "小程序"
 ]
 ```
-
 ```json
 [
     "Vuejs",

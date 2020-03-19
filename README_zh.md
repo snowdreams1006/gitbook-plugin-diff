@@ -132,7 +132,7 @@ new code
 
 - `ignoreCase` ： `true`忽略大小写差异。默认为`false` 。
 
-**例子**
+**示例**
 
 - 用法
 
@@ -174,7 +174,7 @@ cap
 
 - `ignoreCase` ：与`diffChars`相同。
 
-**例子**
+**示例**
 
 - 用法
 
@@ -216,7 +216,7 @@ beep boob blah
 
 - `ignoreCase` ：与`diffWords`相同。
 
-**例子**
+**示例**
 
 - 用法
 
@@ -259,7 +259,7 @@ beep boob blah
 - `ignoreWhitespace` ： `true`忽略前导和尾随空白。这与`diffTrimmedLines`相同
 - `newlineIsToken` ： `true` `newlineIsToken`换行符视为单独的标记。这允许换行结构的更改独立于行内容而发生，并照此处理。通常，这是`diffLines`更加人性化的形式，并且`diffLines`更适合于补丁和其他计算机友好的输出。
 
-**例子**
+**示例**
 
 - 用法
 
@@ -310,7 +310,7 @@ who
 - `ignoreWhitespace` ：与`diffLines`相同。
 - `newlineIsToken` ：同`diffLines` 。
 
-**例子**
+**示例**
 
 - 用法
 
@@ -356,7 +356,7 @@ who
 
 返回更改对象列表（请参见下文）。
 
-**例子**
+**示例**
 
 - 用法
 
@@ -402,7 +402,7 @@ who
 
 返回更改对象列表（请参见下文）。
 
-**例子**
+**示例**
 
 - 用法
 
@@ -454,7 +454,7 @@ who
 
 返回更改对象列表（请参见下文）。
 
-**例子**
+**示例**
 
 - 用法
 
@@ -512,7 +512,7 @@ who
 
 - `comparator` ：用于自定义相等性检查的`function(left, right)`
 
-**例子**
+**示例**
 
 - 用法
 

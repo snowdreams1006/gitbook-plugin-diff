@@ -33,7 +33,6 @@
   "description": "A gitBook plugin for generating and exporting mind map within markdown"
 }
 ```
-
 ```json
 {
   "name": "gitbook-plugin-diff",
@@ -46,23 +45,15 @@
 
 - preview
 
-{% diff method="diffJson" %}
-```json
+```diff
 {
-  "name": "gitbook-plugin-diff",
-  "version": "0.2.1",
-  "description": "A gitBook plugin for generating and exporting mind map within markdown"
+-   "description": "A gitBook plugin for generating and exporting mind map within markdown",
+-   "name": "gitbook-plugin-simple-mind-map",
++   "description": "A gitbook plugin for showing the differences between the codes within markdown",
++   "name": "gitbook-plugin-diff",
+    "version": "0.2.1"
 }
 ```
-
-```json
-{
-  "name": "gitbook-plugin-diff",
-  "version": "0.2.1",
-  "description": "A gitbook plugin for showing the differences between the codes within markdown"
-}
-```
-{% enddiff %}
 
 ## Usage
 
@@ -111,7 +102,6 @@ Here is basic grammar in your markdown file :
 ```
 old code
 ```
-
 ```
 new code
 ```
@@ -143,7 +133,6 @@ Returns a list of change objects (See below).
 ```js
 cat
 ```
-
 ```js
 cap
 ```
@@ -152,15 +141,11 @@ cap
 
 - preview 
 
-{% diff method="diffChars" %}
-```js
-cat
+```diff
+  ca
+- t
++ p
 ```
-
-```js
-cap
-```
-{% enddiff %}
 
 #### `Diff.diffWords(oldStr, newStr[, options])`
 
@@ -185,7 +170,6 @@ Returns a list of change objects (See below).
 ```bash
 beep boop  
 ```
-
 ```bash
 beep boob blah
 ```
@@ -194,15 +178,13 @@ beep boob blah
 
 - preview 
 
-{% diff method="diffWords" %}
-```bash
-beep boop
-```
+```diff
+  beep 
+- boop
++ boob
 
-```bash
-beep boob blah
++ blah
 ```
-{% enddiff %}
 
 #### `Diff.diffWordsWithSpace(oldStr, newStr[, options])`
 
@@ -227,7 +209,6 @@ Returns a list of change objects (See below).
 ```bash
 beep boop  
 ```
-
 ```bash
 beep boob blah
 ```
@@ -236,15 +217,11 @@ beep boob blah
 
 - preview 
 
-{% diff method="diffWordsWithSpace" %}
-```bash
-beep boop
+```diff
+  beep 
+- boop
++ boob blah
 ```
-
-```bash
-beep boob blah
-```
-{% enddiff %}
 
 #### `Diff.diffLines(oldStr, newStr[, options])`
 
@@ -272,7 +249,6 @@ beep boop
 the cat is palying with cap
 what
 ```
-
 ```bash
 beep boob blah
 the cat is palying with cap
@@ -283,19 +259,17 @@ who
 
 - preview 
 
-{% diff method="diffLines",options={"newlineIsToken":true} %}
-```bash
-beep boop
-the cat is palying with cap
-what
-```
+```diff
+- beep boop
 
-```bash
-beep boob blah
-the cat is palying with cap
-who
++ beep boob blah
+
+  the cat is palying with cap
+
+- what
+
++ who
 ```
-{% enddiff %}
 
 #### `Diff.diffTrimmedLines(oldStr, newStr[, options])`
 
@@ -323,7 +297,6 @@ beep boop
 the cat is palying with cap
 what
 ```
-
 ```bash
 beep boob blah
 the cat is palying with cat
@@ -334,19 +307,15 @@ who
 
 - preview 
 
-{% diff method="diffTrimmedLines",options={"newlineIsToken":true} %}
-```bash
-beep boop
-the cat is palying with cap
-what
-```
+```diff
+- beep boop
+  the cat is palying with cap
+  what
 
-```bash
-beep boob blah
-the cat is palying with cat
-who
++ beep boob blah
+  the cat is palying with cat
+  who
 ```
-{% enddiff %}
 
 #### `Diff.diffSentences(oldStr, newStr[, options])`
 
@@ -369,7 +338,6 @@ beep boop
 the cat is palying with cap
 what
 ```
-
 ```bash
 beep boob blah
 the cat is palying with cat
@@ -380,19 +348,15 @@ who
 
 - preview 
 
-{% diff method="diffSentences" %}
-```bash
-beep boop
-the cat is palying with cap
-what
-```
+```diff
+- beep boop
+  the cat is palying with cap
+  what
 
-```bash
-beep boob blah
-the cat is palying with cap
-who
++ beep boob blah
+  the cat is palying with cat
+  who
 ```
-{% enddiff %}
 
 #### `Diff.diffCss(oldStr, newStr[, options])`
 
@@ -417,7 +381,6 @@ Returns a list of change objects (See below).
     font-weight: 700;
 }
 ```
-
 ```css
 .markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
     margin-top: 1.5em;
@@ -429,22 +392,21 @@ Returns a list of change objects (See below).
 
 - preview 
 
-{% diff method="diffCss" %}
-```css
-.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
-    margin-top: 1.275em;
-    margin-bottom: .85em;
+```diff
+  .markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
+    margin-top: 
+- 1.275em
++ 1.5em
+  ;
+    margin-bottom: 
+- .85em
++ 1em
+  ;
+- 
     font-weight: 700;
-}
-```
 
-```css
-.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
-    margin-top: 1.5em;
-    margin-bottom: 1em;
 }
 ```
-{% enddiff %}
 
 #### `Diff.diffJson(oldObj, newObj[, options])`
 
@@ -469,7 +431,6 @@ Returns a list of change objects (See below).
   "description": "A gitBook plugin for generating and exporting mind map within markdown"
 }
 ```
-
 ```json
 {
   "name": "gitbook-plugin-diff",
@@ -482,23 +443,15 @@ Returns a list of change objects (See below).
 
 - preview 
 
-{% diff method="diffJson" %}
-```json
+```diff
 {
-  "name": "gitbook-plugin-simple-mind-map",
-  "version": "0.2.1",
-  "description": "A gitBook plugin for generating and exporting mind map within markdown"
+-   "description": "A gitBook plugin for generating and exporting mind map within markdown",
+-   "name": "gitbook-plugin-simple-mind-map",
++   "description": "A gitbook plugin for showing the differences between the codes within markdown",
++   "name": "gitbook-plugin-diff",
+    "version": "0.2.1"
 }
 ```
-
-```json
-{
-  "name": "gitbook-plugin-diff",
-  "version": "0.2.1",
-  "description": "A gitbook plugin for showing the differences between the codes within markdown"
-}
-```
-{% enddiff %}
 
 #### `Diff.diffArrays(oldArr, newArr[, options])`
 
@@ -532,7 +485,6 @@ Returns a list of change objects (See below).
     "小程序"
 ]
 ```
-
 ```json
 [
     "Vuejs",
@@ -549,32 +501,20 @@ Returns a list of change objects (See below).
 
 - preview 
 
-{% diff method="diffArrays" %}
-```json
+```diff
 [
-    "Vue",
-    "Python",
-    "Java",
-    "flutter",
-    "springboot",
-    "docker",
-    "React",
-    "小程序"
+-   Vue
+-   Python
++   Vuejs
++   Nodejs
+    Java
+    flutter
+    springboot
+    docker
+    React
+-   小程序
 ]
 ```
-
-```json
-[
-    "Vuejs",
-    "Nodejs",
-    "Java",
-    "flutter",
-    "springboot",
-    "docker",
-    "React"
-]
-```
-{% enddiff %}
 
 ### Step #3 - Run gitbook commands
 
