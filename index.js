@@ -78,6 +78,11 @@ module.exports = {
                         diff = Diff.diffLines(oldStr, newStr,options);
                         diff.forEach(function(part){
                             var modifier = part.added ? "+ " : part.removed ? "- " : "  ";
+
+                            console.log(">>>diffLines<<<");
+                            console.log(part.value);
+                            console.log("---diffLines---");
+
                             showDiffCode += modifier + part.value + "\n";
                         });
                         break; 
@@ -86,7 +91,13 @@ module.exports = {
                         diff = Diff.diffTrimmedLines(oldStr, newStr,options);
                         diff.forEach(function(part){
                             var modifier = part.added ? "+ " : part.removed ? "- " : "  ";
-                            showDiffCode += modifier + part.value + "\n";
+                            part.value.split("\n").forEach(function(item,index){
+                                if(index == 0){
+                                    showDiffCode += modifier + item + "\n";
+                                }else{
+                                    showDiffCode += "  " + item + "\n";
+                                }
+                            });
                         });
                         break; 
                     case "diffSentences":
