@@ -1,4 +1,4 @@
-# 欢迎使用gitbook-plugin-diff👋
+# 欢迎访问 gitbook-plugin-diff 官网 👋
 
 [![npm:version](https://img.shields.io/npm/v/gitbook-plugin-diff.svg)](https://www.npmjs.com/package/gitbook-plugin-diff)
 [![npm:download](https://img.shields.io/npm/dt/gitbook-plugin-diff.svg)](https://www.npmjs.com/package/gitbook-plugin-diff)
@@ -46,11 +46,10 @@
 
 - 预览
 
-{％diff method = "diffJson”" ％}
-
+{% diff method="diffJson" %}
 ```json
 {
-  "name": "gitbook-plugin-diff",
+  "name": "gitbook-plugin-simple-mind-map",
   "version": "0.2.1",
   "description": "A gitBook plugin for generating and exporting mind map within markdown"
 }
@@ -63,8 +62,7 @@
   "description": "A gitbook plugin for showing the differences between the codes within markdown"
 }
 ```
-
-{％enddiff％}
+{% enddiff %}
 
 ## 用法
 
@@ -154,8 +152,7 @@ cap
 
 - 预览
 
-{％diff method="diffChars”"  ％}
-
+{% diff method="diffChars" %}
 ```js
 cat
 ```
@@ -163,8 +160,7 @@ cat
 ```js
 cap
 ```
-
-{％ enddiff ％}
+{% enddiff %}
 
 #### `Diff.diffWords(oldStr, newStr[, options])`
 
@@ -198,8 +194,7 @@ beep boob blah
 
 - 预览
 
-{％diff method="diffWords" ％}
-
+{% diff method="diffWords" %}
 ```bash
 beep boop
 ```
@@ -207,8 +202,7 @@ beep boop
 ```bash
 beep boob blah
 ```
-
-{％enddiff％}
+{% enddiff %}
 
 #### `Diff.diffWordsWithSpace(oldStr, newStr[, options])`
 
@@ -242,8 +236,7 @@ beep boob blah
 
 - 预览
 
-{％diff method="diffWordsWithSpace" ％}
-
+{% diff method="diffWordsWithSpace" %}
 ```bash
 beep boop
 ```
@@ -251,8 +244,7 @@ beep boop
 ```bash
 beep boob blah
 ```
-
-{％enddiff％}
+{% enddiff %}
 
 #### `Diff.diffLines(oldStr, newStr[, options])`
 
@@ -291,8 +283,7 @@ who
 
 - 预览
 
-{％diff method="diffLines",options={"newlineIsToken":true} ％}
-
+{% diff method="diffLines",options={"newlineIsToken":true} %}
 ```bash
 beep boop
 the cat is palying with cap
@@ -304,8 +295,7 @@ beep boob blah
 the cat is palying with cap
 who
 ```
-
-{％enddiff％}
+{% enddiff %}
 
 #### `Diff.diffTrimmedLines(oldStr, newStr[, options])`
 
@@ -357,8 +347,6 @@ the cat is palying with cat
 who
 ```
 {% enddiff %}
-
-{％enddiff％}
 
 #### `Diff.diffSentences(oldStr, newStr[, options])`
 
@@ -650,7 +638,7 @@ gitbook serve
 }
 ```
 
-或者您可以将`method`设置为默认方法以在代码之间进行比较：
+或者您可以将 `method` 设置为默认方法用于代码之间进行比较方式：
 
 ```json
 {
@@ -663,7 +651,7 @@ gitbook serve
 }
 ```
 
-或者您可以根据方法将`options`设置为默认设置：
+或者您可以根据方法将 `options` 设置为默认选项.
 
 ```json
 {
