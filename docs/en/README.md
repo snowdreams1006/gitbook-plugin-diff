@@ -26,7 +26,7 @@
 {% diff method="diffJson" %}
 ```json
 {
-  "name": "gitbook-plugin-simple-mind-map",
+  "name": "gitbook-plugin-diff",
   "version": "0.2.1",
   "description": "A gitBook plugin for generating and exporting mind map within markdown"
 }
@@ -45,7 +45,7 @@
 {% diff method="diffJson" %}
 ```json
 {
-  "name": "gitbook-plugin-simple-mind-map",
+  "name": "gitbook-plugin-diff",
   "version": "0.2.1",
   "description": "A gitBook plugin for generating and exporting mind map within markdown"
 }
@@ -64,13 +64,13 @@
 
 ### Step #1 - Update `book.json` file
 
-In you gitbook's `book.json` file, add `simple-mind-map` to `plugins` list.
+In you gitbook's `book.json` file, add `diff` to `plugins` list.
 
 Here is simplest example :
 
 ```json
 {
-    "plugins": ["simple-mind-map"]
+    "plugins": ["diff"]
 }
 ```
 
@@ -79,34 +79,18 @@ In addition, the supported configuration options are as follows :
 ```json
 "gitbook": {
     "properties": {
-        "type": {
+        "method": {
             "type": "string",
-            "title": "Markdown or MindMup or Txtmap or Pandoc",
+            "title": "jsdiff api method",
             "required": false,
-            "default": "markdown"
+            "default": "diffLines",
+            "description": "some supported methods such as diffChars or diffWords or diffWordsWithSpace or diffLines or diffTrimmedLines or diffSentences or diffCss or diffJson or diffArrays"
         },
-        "preset": {
-            "type": "string",
-            "title": "colorful or default",
-            "required": false,
-            "default": "colorful"
-        },
-        "linkShape": {
-            "type": "string",
-            "title": "diagonal or bracket",
-            "required": false,
-            "default": "diagonal"
-        },
-        "autoFit": {
-            "type": "boolean",
-            "title": "true or false",
-            "required": false,
-            "default": true
-        },
-        "style": {
+        "options": {
             "type": "object",
-            "title": "custom style",
-            "required": false
+            "title": "jsdiff api options",
+            "required": false,
+            "description": "some methods may not support options"
         }
     }
 }
@@ -131,16 +115,16 @@ And there are some examples :
 
 ### Step #3 - Run gitbook commands
 
-1. Run `gitbook install`. It will automatically install `simple-mind-map` gitbook plugin for your book. This is needed only once.
+1. Run `gitbook install`. It will automatically install `diff` gitbook plugin for your book. This is needed only once.
 
 ```bash
 gitbook install
 ```
 
-or you can run `npm install gitbook-plugin-simple-mind-map` to install locally.
+or you can run `npm install gitbook-plugin-diff` to install locally.
 
 ```bash
-npm install gitbook-plugin-simple-mind-map
+npm install gitbook-plugin-diff
 ```
 
 2. Build your book (`gitbook build`) or serve (`gitbook serve`) as usual.
@@ -149,21 +133,18 @@ npm install gitbook-plugin-simple-mind-map
 gitbook serve
 ```
 
-
-## Example
+## Examples
 
 - Official documentation configuration file
 
-> [https://github.com/snowdreams1006/gitbook-plugin-simple-mind-map/blob/master/docs/book.json](https://github.com/snowdreams1006/gitbook-plugin-simple-mind-map/blob/master/docs/book.json)
+> [https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/docs/book.json](https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/docs/book.json)
 
 ```json
 {
-    "plugins": ["simple-mind-map"],
+    "plugins": ["diff"],
     "pluginsConfig": {
-        "simple-mind-map": {
-            "type": "markdown",
-            "preset": "colorful",
-            "linkShape": "diagonal"
+        "diff": {
+            "method": "diffJson"
         }
     }
 }
@@ -171,14 +152,14 @@ gitbook serve
 
 - Official example configuration file
 
-> [https://github.com/snowdreams1006/gitbook-plugin-simple-mind-map/blob/master/example/book.json](https://github.com/snowdreams1006/gitbook-plugin-simple-mind-map/blob/master/example/book.json)
+> [https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/example/book.json](https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/example/book.json)
 
 ```json
 {
-    "plugins": ["simple-mind-map"],
+    "plugins": ["diff"],
     "pluginsConfig": {
-        "simple-mind-map": {
-            "type": "markdown"
+        "diff": {
+            "method": "diffJson"
         }
     }
 }
@@ -188,52 +169,33 @@ gitbook serve
 
 ```json
 {
-    "plugins": ["simple-mind-map"]
+    "plugins": ["diff"]
 }
 ```
 
-or you can set `type` as your default language type:
+or you can set `method` as your default method to compare between codes:
 
 ```json
 {
-    "plugins": ["simple-mind-map"],
+    "plugins": ["diff"],
     "pluginsConfig": {
-        "simple-mind-map": {
-            "type": "markdown"
+        "diff": {
+            "method": "diffChars"
         }
     }
 }
 ```
 
-or you can set `preset` or `linkShape` and `autoFit` as your default settings:
+or you can set `options` as your default settings according to method:
 
 ```json
 {
-    "plugins": ["simple-mind-map"],
+    "plugins": ["diff"],
     "pluginsConfig": {
-        "simple-mind-map": {
-            "type": "markdown",
-            "preset": "colorful",
-            "linkShape": "diagonal",
-            "autoFit": true
-        }
-    }
-}
-```
-
-or you can add `style` to custom your style of mind map:
-
-```json
-{
-    "plugins": ["simple-mind-map"],
-    "pluginsConfig": {
-        "simple-mind-map": {
-            "type": "markdown",
-            "preset": "colorful",
-            "linkShape": "diagonal",
-            "autoFit": true,
-            "style": {
-              "height":  "750px"
+        "diff": {
+            "method": "diffChars",
+            "options": {
+              "ignoreCase": true
             }
         }
     }
