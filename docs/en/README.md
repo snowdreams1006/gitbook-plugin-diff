@@ -12,8 +12,6 @@
 
 > A gitbook plugin for showing the differences between the codes within markdown
 
-[English](./README.md) | [中文](./README_zh.md)
-
 ### 🏠 [Homepage](https://github.com/snowdreams1006/gitbook-plugin-diff#readme)
 
 - Github : [https://snowdreams1006.github.io/gitbook-plugin-diff/](https://snowdreams1006.github.io/gitbook-plugin-diff/)
@@ -28,7 +26,7 @@
 {% diff method="diffJson" %}
 ```json
 {
-  "name": "gitbook-plugin-diff",
+  "name": "gitbook-plugin-simple-mind-map",
   "version": "0.2.1",
   "description": "A gitBook plugin for generating and exporting mind map within markdown"
 }
