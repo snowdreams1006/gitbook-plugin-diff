@@ -98,12 +98,17 @@ module.exports = {
                         break;
                 }
                 if(method == "diffJson"){
+                    var diffObj = [];
                     diff.forEach(function(part){
-                        var modifier = part.added ? "+ " : part.removed ? "- " : "  ";
+                        var modifier = part.added ? "+   " : part.removed ? "-   " : "    ";
                         part.value.split("\n").forEach(function(item){
                             item = item.trim();
                             if(item){
-                                showDiffCode += modifier + item + '\n';
+                                if(item == "{" || item == "}"){
+                                    showDiffCode +=  item + '\n';
+                                }else{
+                                    showDiffCode += modifier + item + '\n';
+                                }
                             }
                         });
                     });
