@@ -1,30 +1,30 @@
 # 欢迎使用gitbook-plugin-diff👋
 
-[![npm：版本](https://img.shields.io/npm/v/gitbook-plugin-diff.svg)](https://www.npmjs.com/package/gitbook-plugin-diff)[](https://www.npmjs.com/package/gitbook-plugin-diff)[](https://www.npmjs.com/package/gitbook-plugin-diff)
-[![npm：下载](https://img.shields.io/npm/dt/gitbook-plugin-diff.svg)](https://www.npmjs.com/package/gitbook-plugin-diff)[](https://www.npmjs.com/package/gitbook-plugin-diff)[](https://www.npmjs.com/package/gitbook-plugin-diff)
-[![npm：先决条件](https://img.shields.io/badge/gitbook-*-blue.svg)](https://www.npmjs.com/package/gitbook-plugin-diff)[](https://www.npmjs.com/package/gitbook-plugin-diff)[](https://www.npmjs.com/package/gitbook-plugin-diff)
-[![github：文档](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/snowdreams1006/gitbook-plugin-diff#readme)[](https://github.com/snowdreams1006/gitbook-plugin-diff#readme)[](https://github.com/snowdreams1006/gitbook-plugin-diff#readme)
-[![github：维护](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/snowdreams1006/gitbook-plugin-diff/graphs/commit-activity)[](https://github.com/snowdreams1006/gitbook-plugin-diff/graphs/commit-activity)[](https://github.com/snowdreams1006/gitbook-plugin-diff/graphs/commit-activity)
-[![npm：许可证](https://img.shields.io/npm/l/gitbook-plugin-diff.svg)](https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/LICENSE)[](https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/LICENSE)[](https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/LICENSE)
-[![github：snodreams1006](https://img.shields.io/badge/github-snowdreams1006-brightgreen.svg)](https://github.com/snowdreams1006)[](https://github.com/snowdreams1006)[](https://github.com/snowdreams1006)
-[![网址：snodreams1006.tech](https://img.shields.io/badge/website-snowdreams1006.tech-brightgreen.svg)](https://snowdreams1006.tech/)[](https://snowdreams1006.tech/)[](https://snowdreams1006.tech/)
-[![微信公众号：雪之梦技术驿站-brightgreen.svg](https://img.shields.io/badge/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7-%E9%9B%AA%E4%B9%8B%E6%A2%A6%E6%8A%80%E6%9C%AF%E9%A9%BF%E7%AB%99-brightgreen.svg)](https://snowdreams1006.github.io/snowdreams1006-wechat-public.jpeg)[](https://snowdreams1006.github.io/snowdreams1006-wechat-public.jpeg)[](https://snowdreams1006.github.io/snowdreams1006-wechat-public.jpeg)
+[![npm:version](https://img.shields.io/npm/v/gitbook-plugin-diff.svg)](https://www.npmjs.com/package/gitbook-plugin-diff)
+[![npm:download](https://img.shields.io/npm/dt/gitbook-plugin-diff.svg)](https://www.npmjs.com/package/gitbook-plugin-diff)
+[![npm:prerequisite](https://img.shields.io/badge/gitbook-*-blue.svg)](https://www.npmjs.com/package/gitbook-plugin-diff)
+[![github:documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/snowdreams1006/gitbook-plugin-diff#readme)
+[![github:maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/snowdreams1006/gitbook-plugin-diff/graphs/commit-activity)
+[![npm:license](https://img.shields.io/npm/l/gitbook-plugin-diff.svg)](https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/LICENSE)
+[![github:snodreams1006](https://img.shields.io/badge/github-snowdreams1006-brightgreen.svg)](https://github.com/snowdreams1006)
+[![website:snodreams1006.tech](https://img.shields.io/badge/website-snowdreams1006.tech-brightgreen.svg)](https://snowdreams1006.tech/)
+[![微信公众号:雪之梦技术驿站-brightgreen.svg](https://img.shields.io/badge/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7-%E9%9B%AA%E4%B9%8B%E6%A2%A6%E6%8A%80%E6%9C%AF%E9%A9%BF%E7%AB%99-brightgreen.svg)](https://snowdreams1006.github.io/snowdreams1006-wechat-public.jpeg)
 
-> 一个gitbook插件，用于显示markdown中代码之间的差异
+> 在 markdown 文档中显示代码之间的差异的 Gitbook 插件
 
-[English](./README.md) | [中文](./README_zh.md)
+[中文](./README_zh.md) | [English](./README.md)
 
 ### 🏠 [主页](https://github.com/snowdreams1006/gitbook-plugin-diff#readme)
 
-- GitHub： [https](https://snowdreams1006.github.io/gitbook-plugin-diff/) : [//snowdreams1006.github.io/gitbook-plugin-diff/](https://snowdreams1006.github.io/gitbook-plugin-diff/)
-- 亚搏体育app： [https](https://snowdreams1006.gitlab.io/gitbook-plugin-diff/) ：//snowdreams1006.gitlab.io/gitbook-plugin-diff/
-- 吉蒂： [https](https://snowdreams1006.gitee.io/gitbook-plugin-diff/) ://snowdreams1006.gitee.io/gitbook-plugin-diff/
+- Github : [https://snowdreams1006.github.io/gitbook-plugin-diff/](https://snowdreams1006.github.io/gitbook-plugin-diff/)
+- GitLab: [https://snowdreams1006.gitlab.io/gitbook-plugin-diff/](https://snowdreams1006.gitlab.io/gitbook-plugin-diff/)
+- Gitee : [https://snowdreams1006.gitee.io/gitbook-plugin-diff/](https://snowdreams1006.gitee.io/gitbook-plugin-diff/)
 
 ## 屏幕截图
 
 - 用法
 
-```markdown
+````markdown
 {% diff method="diffJson" %}
 ```json
 {
@@ -42,11 +42,11 @@
 }
 ```
 {% enddiff %}
-```
+````
 
-- 预习
+- 预览
 
-{％diff method =“ diffJson”％}
+{％diff method = "diffJson”" ％}
 
 ```json
 {
@@ -68,11 +68,11 @@
 
 ## 用法
 
-### 步骤＃1-更新`book.json`文件
+### 步骤＃1-更新 `book.json` 文件
 
-在gitbook的`book.json`文件中，将`diff`添加到`plugins`列表中。
+在您的 `gitbook` 的 `book.json` 文件中,将 `diff` 添加到 `plugins` 列表中.
 
-这是最简单的示例：
+这是最简单的示例: 
 
 ```json
 {
@@ -80,7 +80,7 @@
 }
 ```
 
-此外，受支持的配置选项如下：
+此外,受支持的配置选项如下:
 
 ```json
 "gitbook": {
@@ -102,13 +102,13 @@
 }
 ```
 
-### 步骤＃2-在markdown文件中使用
+### 步骤＃2- 使用 `markdown` 语法
 
-`diff`支持`method`和用于生成diff块代码的`options` 。
+`diff` 插件支持 `method` 和 `options` 等选项生成差异代码块.
 
-这是您的markdown文件中的基本语法：
+这是在 `markdown` 文件中基本使用语法:
 
-```
+````
 {% diff %}
 ```
 old code
@@ -118,9 +118,9 @@ old code
 new code
 ```
 {% enddiff %}
-```
+````
 
-还有一些例子：
+下面有一些基本示例:
 
 #### `Diff.diffChars(oldStr, newStr[, options])`
 
@@ -140,7 +140,7 @@ new code
 
 > 设置`method="diffChars"`以调用`Diff.diffChars(oldStr, newStr[, options])`方法
 
-```markdown
+````markdown
 {% diff method="diffChars" %}
 ```js
 cat
@@ -150,11 +150,11 @@ cat
 cap
 ```
 {% enddiff %}
-```
+````
 
-- 预习
+- 预览
 
-{％diff method =“ diffChars”％}
+{％diff method="diffChars”"  ％}
 
 ```js
 cat
@@ -164,7 +164,7 @@ cat
 cap
 ```
 
-{％enddiff％}
+{％ enddiff ％}
 
 #### `Diff.diffWords(oldStr, newStr[, options])`
 
@@ -184,7 +184,7 @@ cap
 
 > 设置`method="diffWords"`来调用`Diff.diffWords(oldStr, newStr[, options])`方法
 
-```markdown
+````markdown
 {% diff method="diffWords" %}
 ```bash
 beep boop
@@ -194,11 +194,11 @@ beep boop
 beep boob blah
 ```
 {% enddiff %}
-```
+````
 
-- 预习
+- 预览
 
-{％diff method =“ diffWords”％}
+{％diff method="diffWords" ％}
 
 ```bash
 beep boop
@@ -228,7 +228,7 @@ beep boob blah
 
 > 设置`method="diffWordsWithSpace"`以调用`Diff.diffWordsWithSpace(oldStr, newStr[, options])`方法
 
-```markdown
+````markdown
 {% diff method="diffWordsWithSpace" %}
 ```bash
 beep boop
@@ -238,11 +238,11 @@ beep boop
 beep boob blah
 ```
 {% enddiff %}
-```
+````
 
-- 预习
+- 预览
 
-{％diff method =“ diffWordsWithSpace”％}
+{％diff method="diffWordsWithSpace" ％}
 
 ```bash
 beep boop
@@ -273,7 +273,7 @@ beep boob blah
 
 > 设置`method="diffLines"`以调用`Diff.diffLines(oldStr, newStr[, options])`方法
 
-```markdown
+````markdown
 {% diff method="diffLines",options={"newlineIsToken":true} %}
 ```bash
 beep boop
@@ -287,11 +287,11 @@ the cat is palying with cap
 who
 ```
 {% enddiff %}
-```
+````
 
-- 预习
+- 预览
 
-{％diff method =“ diffLines”，options = {“ newlineIsToken”：true}％}
+{％diff method="diffLines",options={"newlineIsToken":true} ％}
 
 ```bash
 beep boop
@@ -326,7 +326,7 @@ who
 
 > 设置`method="diffTrimmedLines"`来调用`Diff.diffTrimmedLines(oldStr, newStr[, options])`方法
 
-```markdown
+````markdown
 {% diff method="diffTrimmedLines",options={"newlineIsToken":true} %}
 ```bash
 beep boop
@@ -340,12 +340,11 @@ the cat is palying with cat
 who
 ```
 {% enddiff %}
-```
+````
 
-- 预习
+- 预览
 
-{％diff method =“ diffTrimmedLines”，options = {“ newlineIsToken”：true}％}
-
+{% diff method="diffTrimmedLines",options={"newlineIsToken":true} %}
 ```bash
 beep boop
 the cat is palying with cap
@@ -357,6 +356,7 @@ beep boob blah
 the cat is palying with cat
 who
 ```
+{% enddiff %}
 
 {％enddiff％}
 
@@ -374,7 +374,7 @@ who
 
 > 设置`method="diffSentences"`来调用`Diff.diffSentences(oldStr, newStr[, options])`方法
 
-```markdown
+````markdown
 {% diff method="diffSentences" %}
 ```bash
 beep boop
@@ -388,12 +388,11 @@ the cat is palying with cat
 who
 ```
 {% enddiff %}
-```
+````
 
-- 预习
+- 预览
 
-{％diff method =“ diffSentences”％}
-
+{% diff method="diffSentences" %}
 ```bash
 beep boop
 the cat is palying with cap
@@ -402,11 +401,10 @@ what
 
 ```bash
 beep boob blah
-the cat is palying with cap
+the cat is palying with cat
 who
 ```
-
-{％enddiff％}
+{% enddiff %}
 
 #### `Diff.diffCss(oldStr, newStr[, options])`
 
@@ -422,7 +420,7 @@ who
 
 > 设置`method="diffCss"`来调用`Diff.diffCss(oldStr, newStr[, options])`方法
 
-```markdown
+````markdown
 {% diff method="diffCss" %}
 ```css
 .markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
@@ -439,12 +437,11 @@ who
 }
 ```
 {% enddiff %}
-```
+````
 
-- 预习
+- 预览
 
-{％diff method =“ diffCss”％}
-
+{% diff method="diffCss" %}
 ```css
 .markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
     margin-top: 1.275em;
@@ -459,8 +456,7 @@ who
     margin-bottom: 1em;
 }
 ```
-
-{％enddiff％}
+{% enddiff %}
 
 #### `Diff.diffJson(oldObj, newObj[, options])`
 
@@ -476,7 +472,7 @@ who
 
 > 设置`method="diffJson"`来调用`Diff.diffJson(oldObj, newObj[, options])`方法
 
-```markdown
+````markdown
 {% diff method="diffJson" %}
 ```json
 {
@@ -494,12 +490,11 @@ who
 }
 ```
 {% enddiff %}
-```
+````
 
-- 预习
+- 预览
 
-{％diff method =“ diffJson”％}
-
+{% diff method="diffJson" %}
 ```json
 {
   "name": "gitbook-plugin-simple-mind-map",
@@ -515,8 +510,7 @@ who
   "description": "A gitbook plugin for showing the differences between the codes within markdown"
 }
 ```
-
-{％enddiff％}
+{% enddiff %}
 
 #### `Diff.diffArrays(oldArr, newArr[, options])`
 
@@ -536,7 +530,7 @@ who
 
 > 设置`method="diffArrays"`以调用`Diff.diffArrays(oldArr, newArr[, options])`方法
 
-```markdown
+````markdown
 {% diff method="diffArrays" %}
 ```json
 [
@@ -563,12 +557,11 @@ who
 ]
 ```
 {% enddiff %}
-```
+````
 
-- 预习
+- 预览
 
-{％diff method =“ diffArrays”％}
-
+{% diff method="diffArrays" %}
 ```json
 [
     "Vue",
@@ -593,24 +586,25 @@ who
     "React"
 ]
 ```
+{% enddiff %}
 
-{％enddiff％}
+### 步骤＃3- 运行 `gitbook` 命令
 
-### 步骤＃3-运行gitbook命令
+1. 运行 `gitbook install` .它将自动为您的 `gitbook` 安装 `diff` 插件.
 
-1. 运行`gitbook install` 。它将自动为您的书安装`diff` gitbook插件。仅需要一次。
+> 该步骤仅需要允许一次即可.
 
 ```bash
 gitbook install
 ```
 
-或者您可以运行`npm install gitbook-plugin-diff`在本地安装。
+或者您可以运行 `npm install gitbook-plugin-diff` 命令本地安装 `gitbook-plugin-diff` 插件.
 
 ```bash
 npm install gitbook-plugin-diff
 ```
 
-1. 像往常一样构建您的书（ `gitbook build` ）或服务（ `gitbook serve` ）。
+2. 像往常一样构建您的书（ `gitbook build` ）或服务（ `gitbook serve` ）.
 
 ```bash
 gitbook serve
@@ -685,21 +679,21 @@ gitbook serve
 }
 ```
 
-**注意** ：如果您的书还没有，以上代码段可以用作完整的`book.json`文件。
+**注意** ：如果您的书还没有创建,以上代码段可以用作完整的 `book.json` 文件.
 
-## 谢谢
+## 致谢
 
-- JavaScript文字差异实现。 ： [https](https://github.com/kpdecker/jsdiff) : [//github.com/kpdecker/jsdiff](https://github.com/kpdecker/jsdiff)
-- 在您的node.js控制台中获取颜色： [https](https://github.com/Marak/colors.js) : [//github.com/Marak/colors.js](https://github.com/Marak/colors.js)
-- GitBook CodeGroup插件： [https](https://github.com/lwhiteley/gitbook-plugin-codegroup) : [//github.com/lwhiteley/gitbook-plugin-codegroup](https://github.com/lwhiteley/gitbook-plugin-codegroup)
+- A javascript text differencing implementation. : [https://github.com/kpdecker/jsdiff](https://github.com/kpdecker/jsdiff)
+- get colors in your node.js console : [https://github.com/Marak/colors.js](https://github.com/Marak/colors.js)
+- GitBook CodeGroup Plugin : [https://github.com/lwhiteley/gitbook-plugin-codegroup](https://github.com/lwhiteley/gitbook-plugin-codegroup)
 
 ## 作者
 
-dream **snowdreams1006**
+👤 **snowdreams1006**
 
-- 网站： [snowdreams1006.tech](https://snowdreams1006.tech/)
-- [GitHub](https://github.com/snowdreams1006) ： [@ snowdreams1006](https://github.com/snowdreams1006)
-- 电子邮件： [snowdreams1006@163.com](mailto:snowdreams1006@163.com)
+- 网站 : [snowdreams1006.tech](https://snowdreams1006.tech/)
+- GitHub :  [@snowdreams1006](https://github.com/snowdreams1006)
+- 电子邮件 : [snowdreams1006@163.com](mailto:snowdreams1006@163.com)
 
 ## 贡献
 
@@ -713,4 +707,4 @@ dream **snowdreams1006**
 
 版权所有©2019 [snowdreams1006](https://github.com/snowdreams1006) 。
 
-该项目是[麻省理工学院](https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/LICENSE)许可的。
+该项目是[MIT](https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/LICENSE)许可的。
