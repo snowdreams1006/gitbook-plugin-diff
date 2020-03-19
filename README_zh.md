@@ -1,0 +1,716 @@
+# 欢迎使用gitbook-plugin-diff👋
+
+[![npm：版本](https://img.shields.io/npm/v/gitbook-plugin-diff.svg)](https://www.npmjs.com/package/gitbook-plugin-diff)[](https://www.npmjs.com/package/gitbook-plugin-diff)[](https://www.npmjs.com/package/gitbook-plugin-diff)
+[![npm：下载](https://img.shields.io/npm/dt/gitbook-plugin-diff.svg)](https://www.npmjs.com/package/gitbook-plugin-diff)[](https://www.npmjs.com/package/gitbook-plugin-diff)[](https://www.npmjs.com/package/gitbook-plugin-diff)
+[![npm：先决条件](https://img.shields.io/badge/gitbook-*-blue.svg)](https://www.npmjs.com/package/gitbook-plugin-diff)[](https://www.npmjs.com/package/gitbook-plugin-diff)[](https://www.npmjs.com/package/gitbook-plugin-diff)
+[![github：文档](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/snowdreams1006/gitbook-plugin-diff#readme)[](https://github.com/snowdreams1006/gitbook-plugin-diff#readme)[](https://github.com/snowdreams1006/gitbook-plugin-diff#readme)
+[![github：维护](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/snowdreams1006/gitbook-plugin-diff/graphs/commit-activity)[](https://github.com/snowdreams1006/gitbook-plugin-diff/graphs/commit-activity)[](https://github.com/snowdreams1006/gitbook-plugin-diff/graphs/commit-activity)
+[![npm：许可证](https://img.shields.io/npm/l/gitbook-plugin-diff.svg)](https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/LICENSE)[](https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/LICENSE)[](https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/LICENSE)
+[![github：snodreams1006](https://img.shields.io/badge/github-snowdreams1006-brightgreen.svg)](https://github.com/snowdreams1006)[](https://github.com/snowdreams1006)[](https://github.com/snowdreams1006)
+[![网址：snodreams1006.tech](https://img.shields.io/badge/website-snowdreams1006.tech-brightgreen.svg)](https://snowdreams1006.tech/)[](https://snowdreams1006.tech/)[](https://snowdreams1006.tech/)
+[![微信公众号：雪之梦技术驿站-brightgreen.svg](https://img.shields.io/badge/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7-%E9%9B%AA%E4%B9%8B%E6%A2%A6%E6%8A%80%E6%9C%AF%E9%A9%BF%E7%AB%99-brightgreen.svg)](https://snowdreams1006.github.io/snowdreams1006-wechat-public.jpeg)[](https://snowdreams1006.github.io/snowdreams1006-wechat-public.jpeg)[](https://snowdreams1006.github.io/snowdreams1006-wechat-public.jpeg)
+
+> 一个gitbook插件，用于显示markdown中代码之间的差异
+
+[English](./README.md) | [中文](./README_zh.md)
+
+### 🏠 [主页](https://github.com/snowdreams1006/gitbook-plugin-diff#readme)
+
+- GitHub： [https](https://snowdreams1006.github.io/gitbook-plugin-diff/) : [//snowdreams1006.github.io/gitbook-plugin-diff/](https://snowdreams1006.github.io/gitbook-plugin-diff/)
+- 亚搏体育app： [https](https://snowdreams1006.gitlab.io/gitbook-plugin-diff/) ：//snowdreams1006.gitlab.io/gitbook-plugin-diff/
+- 吉蒂： [https](https://snowdreams1006.gitee.io/gitbook-plugin-diff/) ://snowdreams1006.gitee.io/gitbook-plugin-diff/
+
+## 屏幕截图
+
+- 用法
+
+```markdown
+{% diff method="diffJson" %}
+```json
+{
+  "name": "gitbook-plugin-simple-mind-map",
+  "version": "0.2.1",
+  "description": "A gitBook plugin for generating and exporting mind map within markdown"
+}
+```
+
+```json
+{
+  "name": "gitbook-plugin-diff",
+  "version": "0.2.1",
+  "description": "A gitbook plugin for showing the differences between the codes within markdown"
+}
+```
+{% enddiff %}
+```
+
+- 预习
+
+{％diff method =“ diffJson”％}
+
+```json
+{
+  "name": "gitbook-plugin-diff",
+  "version": "0.2.1",
+  "description": "A gitBook plugin for generating and exporting mind map within markdown"
+}
+```
+
+```json
+{
+  "name": "gitbook-plugin-diff",
+  "version": "0.2.1",
+  "description": "A gitbook plugin for showing the differences between the codes within markdown"
+}
+```
+
+{％enddiff％}
+
+## 用法
+
+### 步骤＃1-更新`book.json`文件
+
+在gitbook的`book.json`文件中，将`diff`添加到`plugins`列表中。
+
+这是最简单的示例：
+
+```json
+{
+    "plugins": ["diff"]
+}
+```
+
+此外，受支持的配置选项如下：
+
+```json
+"gitbook": {
+    "properties": {
+        "method": {
+            "type": "string",
+            "title": "jsdiff api method",
+            "required": false,
+            "default": "diffLines",
+            "description": "some supported methods such as diffChars or diffWords or diffWordsWithSpace or diffLines or diffTrimmedLines or diffSentences or diffCss or diffJson or diffArrays"
+        },
+        "options": {
+            "type": "object",
+            "title": "jsdiff api options",
+            "required": false,
+            "description": "some methods may not support options"
+        }
+    }
+}
+```
+
+### 步骤＃2-在markdown文件中使用
+
+`diff`支持`method`和用于生成diff块代码的`options` 。
+
+这是您的markdown文件中的基本语法：
+
+```
+{% diff %}
+```
+old code
+```
+
+```
+new code
+```
+{% enddiff %}
+```
+
+还有一些例子：
+
+#### `Diff.diffChars(oldStr, newStr[, options])`
+
+> 区分两个文本块，逐个字符比较。
+
+**返回**
+
+返回更改对象列表（请参见下文）。
+
+**选项**
+
+- `ignoreCase` ： `true`忽略大小写差异。默认为`false` 。
+
+**例子**
+
+- 用法
+
+> 设置`method="diffChars"`以调用`Diff.diffChars(oldStr, newStr[, options])`方法
+
+```markdown
+{% diff method="diffChars" %}
+```js
+cat
+```
+
+```js
+cap
+```
+{% enddiff %}
+```
+
+- 预习
+
+{％diff method =“ diffChars”％}
+
+```js
+cat
+```
+
+```js
+cap
+```
+
+{％enddiff％}
+
+#### `Diff.diffWords(oldStr, newStr[, options])`
+
+> 区分两个文本块，逐字比较，忽略空格。
+
+**返回**
+
+返回更改对象列表（请参见下文）。
+
+**选项**
+
+- `ignoreCase` ：与`diffChars`相同。
+
+**例子**
+
+- 用法
+
+> 设置`method="diffWords"`来调用`Diff.diffWords(oldStr, newStr[, options])`方法
+
+```markdown
+{% diff method="diffWords" %}
+```bash
+beep boop
+```
+
+```bash
+beep boob blah
+```
+{% enddiff %}
+```
+
+- 预习
+
+{％diff method =“ diffWords”％}
+
+```bash
+beep boop
+```
+
+```bash
+beep boob blah
+```
+
+{％enddiff％}
+
+#### `Diff.diffWordsWithSpace(oldStr, newStr[, options])`
+
+> 区分两个文本块，逐字比较，将空白视为有效。
+
+**返回**
+
+返回更改对象列表（请参见下文）。
+
+**选项**
+
+- `ignoreCase` ：与`diffWords`相同。
+
+**例子**
+
+- 用法
+
+> 设置`method="diffWordsWithSpace"`以调用`Diff.diffWordsWithSpace(oldStr, newStr[, options])`方法
+
+```markdown
+{% diff method="diffWordsWithSpace" %}
+```bash
+beep boop
+```
+
+```bash
+beep boob blah
+```
+{% enddiff %}
+```
+
+- 预习
+
+{％diff method =“ diffWordsWithSpace”％}
+
+```bash
+beep boop
+```
+
+```bash
+beep boob blah
+```
+
+{％enddiff％}
+
+#### `Diff.diffLines(oldStr, newStr[, options])`
+
+> 比较两个文本块，逐行比较。
+
+**返回**
+
+返回更改对象列表（请参见下文）。
+
+**选项**
+
+- `ignoreWhitespace` ： `true`忽略前导和尾随空白。这与`diffTrimmedLines`相同
+- `newlineIsToken` ： `true` `newlineIsToken`换行符视为单独的标记。这允许换行结构的更改独立于行内容而发生，并照此处理。通常，这是`diffLines`更加人性化的形式，并且`diffLines`更适合于补丁和其他计算机友好的输出。
+
+**例子**
+
+- 用法
+
+> 设置`method="diffLines"`以调用`Diff.diffLines(oldStr, newStr[, options])`方法
+
+```markdown
+{% diff method="diffLines",options={"newlineIsToken":true} %}
+```bash
+beep boop
+the cat is palying with cap
+what
+```
+
+```bash
+beep boob blah
+the cat is palying with cap
+who
+```
+{% enddiff %}
+```
+
+- 预习
+
+{％diff method =“ diffLines”，options = {“ newlineIsToken”：true}％}
+
+```bash
+beep boop
+the cat is palying with cap
+what
+```
+
+```bash
+beep boob blah
+the cat is palying with cap
+who
+```
+
+{％enddiff％}
+
+#### `Diff.diffTrimmedLines(oldStr, newStr[, options])`
+
+> 区分两个文本块，逐行比较，忽略前导和尾随空格。
+
+**返回**
+
+返回更改对象列表（请参见下文）。
+
+**选项**
+
+- `ignoreWhitespace` ：与`diffLines`相同。
+- `newlineIsToken` ：同`diffLines` 。
+
+**例子**
+
+- 用法
+
+> 设置`method="diffTrimmedLines"`来调用`Diff.diffTrimmedLines(oldStr, newStr[, options])`方法
+
+```markdown
+{% diff method="diffTrimmedLines",options={"newlineIsToken":true} %}
+```bash
+beep boop
+the cat is palying with cap
+what
+```
+
+```bash
+beep boob blah
+the cat is palying with cat
+who
+```
+{% enddiff %}
+```
+
+- 预习
+
+{％diff method =“ diffTrimmedLines”，options = {“ newlineIsToken”：true}％}
+
+```bash
+beep boop
+the cat is palying with cap
+what
+```
+
+```bash
+beep boob blah
+the cat is palying with cat
+who
+```
+
+{％enddiff％}
+
+#### `Diff.diffSentences(oldStr, newStr[, options])`
+
+> 区分两个文本块，逐句比较。
+
+**返回**
+
+返回更改对象列表（请参见下文）。
+
+**例子**
+
+- 用法
+
+> 设置`method="diffSentences"`来调用`Diff.diffSentences(oldStr, newStr[, options])`方法
+
+```markdown
+{% diff method="diffSentences" %}
+```bash
+beep boop
+the cat is palying with cap
+what
+```
+
+```bash
+beep boob blah
+the cat is palying with cat
+who
+```
+{% enddiff %}
+```
+
+- 预习
+
+{％diff method =“ diffSentences”％}
+
+```bash
+beep boop
+the cat is palying with cap
+what
+```
+
+```bash
+beep boob blah
+the cat is palying with cap
+who
+```
+
+{％enddiff％}
+
+#### `Diff.diffCss(oldStr, newStr[, options])`
+
+> 比较两个文本块，比较CSS标记。
+
+**返回**
+
+返回更改对象列表（请参见下文）。
+
+**例子**
+
+- 用法
+
+> 设置`method="diffCss"`来调用`Diff.diffCss(oldStr, newStr[, options])`方法
+
+```markdown
+{% diff method="diffCss" %}
+```css
+.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
+    margin-top: 1.275em;
+    margin-bottom: .85em;
+    font-weight: 700;
+}
+```
+
+```css
+.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+```
+{% enddiff %}
+```
+
+- 预习
+
+{％diff method =“ diffCss”％}
+
+```css
+.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
+    margin-top: 1.275em;
+    margin-bottom: .85em;
+    font-weight: 700;
+}
+```
+
+```css
+.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+```
+
+{％enddiff％}
+
+#### `Diff.diffJson(oldObj, newObj[, options])`
+
+> 比较两个JSON对象，比较每个对象上定义的字段。在此比较中，字段的顺序等并不重要。
+
+**返回**
+
+返回更改对象列表（请参见下文）。
+
+**例子**
+
+- 用法
+
+> 设置`method="diffJson"`来调用`Diff.diffJson(oldObj, newObj[, options])`方法
+
+```markdown
+{% diff method="diffJson" %}
+```json
+{
+  "name": "gitbook-plugin-simple-mind-map",
+  "version": "0.2.1",
+  "description": "A gitBook plugin for generating and exporting mind map within markdown"
+}
+```
+
+```json
+{
+  "name": "gitbook-plugin-diff",
+  "version": "0.2.1",
+  "description": "A gitbook plugin for showing the differences between the codes within markdown"
+}
+```
+{% enddiff %}
+```
+
+- 预习
+
+{％diff method =“ diffJson”％}
+
+```json
+{
+  "name": "gitbook-plugin-simple-mind-map",
+  "version": "0.2.1",
+  "description": "A gitBook plugin for generating and exporting mind map within markdown"
+}
+```
+
+```json
+{
+  "name": "gitbook-plugin-diff",
+  "version": "0.2.1",
+  "description": "A gitbook plugin for showing the differences between the codes within markdown"
+}
+```
+
+{％enddiff％}
+
+#### `Diff.diffArrays(oldArr, newArr[, options])`
+
+> 比较两个数组，比较每个项目是否严格相等（===）。
+
+**返回**
+
+返回更改对象列表（请参见下文）。
+
+**选件**
+
+- `comparator` ：用于自定义相等性检查的`function(left, right)`
+
+**例子**
+
+- 用法
+
+> 设置`method="diffArrays"`以调用`Diff.diffArrays(oldArr, newArr[, options])`方法
+
+```markdown
+{% diff method="diffArrays" %}
+```json
+[
+    "Vue",
+    "Python",
+    "Java",
+    "flutter",
+    "springboot",
+    "docker",
+    "React",
+    "小程序"
+]
+```
+
+```json
+[
+    "Vuejs",
+    "Nodejs",
+    "Java",
+    "flutter",
+    "springboot",
+    "docker",
+    "React"
+]
+```
+{% enddiff %}
+```
+
+- 预习
+
+{％diff method =“ diffArrays”％}
+
+```json
+[
+    "Vue",
+    "Python",
+    "Java",
+    "flutter",
+    "springboot",
+    "docker",
+    "React",
+    "小程序"
+]
+```
+
+```json
+[
+    "Vuejs",
+    "Nodejs",
+    "Java",
+    "flutter",
+    "springboot",
+    "docker",
+    "React"
+]
+```
+
+{％enddiff％}
+
+### 步骤＃3-运行gitbook命令
+
+1. 运行`gitbook install` 。它将自动为您的书安装`diff` gitbook插件。仅需要一次。
+
+```bash
+gitbook install
+```
+
+或者您可以运行`npm install gitbook-plugin-diff`在本地安装。
+
+```bash
+npm install gitbook-plugin-diff
+```
+
+1. 像往常一样构建您的书（ `gitbook build` ）或服务（ `gitbook serve` ）。
+
+```bash
+gitbook serve
+```
+
+## 例子
+
+- 官方文档配置文件
+
+> [https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/docs/book.json](https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/docs/book.json)
+
+```json
+{
+    "plugins": ["diff"],
+    "pluginsConfig": {
+        "diff": {
+            "method": "diffJson"
+        }
+    }
+}
+```
+
+- 官方示例配置文件
+
+> [https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/example/book.json](https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/example/book.json)
+
+```json
+{
+    "plugins": ["diff"],
+    "pluginsConfig": {
+        "diff": {
+            "method": "diffJson"
+        }
+    }
+}
+```
+
+- 示例`book.json`文件
+
+```json
+{
+    "plugins": ["diff"]
+}
+```
+
+或者您可以将`method`设置为默认方法以在代码之间进行比较：
+
+```json
+{
+    "plugins": ["diff"],
+    "pluginsConfig": {
+        "diff": {
+            "method": "diffChars"
+        }
+    }
+}
+```
+
+或者您可以根据方法将`options`设置为默认设置：
+
+```json
+{
+    "plugins": ["diff"],
+    "pluginsConfig": {
+        "diff": {
+            "method": "diffChars",
+            "options": {
+              "ignoreCase": true
+            }
+        }
+    }
+}
+```
+
+**注意** ：如果您的书还没有，以上代码段可以用作完整的`book.json`文件。
+
+## 谢谢
+
+- JavaScript文字差异实现。 ： [https](https://github.com/kpdecker/jsdiff) : [//github.com/kpdecker/jsdiff](https://github.com/kpdecker/jsdiff)
+- 在您的node.js控制台中获取颜色： [https](https://github.com/Marak/colors.js) : [//github.com/Marak/colors.js](https://github.com/Marak/colors.js)
+- GitBook CodeGroup插件： [https](https://github.com/lwhiteley/gitbook-plugin-codegroup) : [//github.com/lwhiteley/gitbook-plugin-codegroup](https://github.com/lwhiteley/gitbook-plugin-codegroup)
+
+## 作者
+
+dream **snowdreams1006**
+
+- 网站： [snowdreams1006.tech](https://snowdreams1006.tech/)
+- [GitHub](https://github.com/snowdreams1006) ： [@ snowdreams1006](https://github.com/snowdreams1006)
+- 电子邮件： [snowdreams1006@163.com](mailto:snowdreams1006@163.com)
+
+## 贡献
+
+欢迎贡献，问题和功能要求！随时检查[问题页面](https://github.com/snowdreams1006/gitbook-plugin-diff/issues) 。
+
+## 表示支持
+
+如果这个项目对您有帮助，请给个[星星](https://github.com/snowdreams1006/gitbook-plugin-diff) ！
+
+## 版权
+
+版权所有©2019 [snowdreams1006](https://github.com/snowdreams1006) 。
+
+该项目是[麻省理工学院](https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/LICENSE)许可的。
