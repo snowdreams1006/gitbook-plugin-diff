@@ -244,9 +244,9 @@ or you can add `style` to custom your style of mind map:
 
 ## Thanks
 
-- Visualize markdown documents as mindmaps : [https://github.com/dundalek/markmap](https://github.com/dundalek/markmap)
-- A GitBook plugin for generating mindmaps within Markdown : [https://github.com/aleen42/gitbook-mindmaps](https://github.com/aleen42/gitbook-mindmaps)
-- Export SVG with Style : [https://chrome.google.com/webstore/detail/export-svg-with-style/dkjdcaddoplepioppogpckelchefhddi](https://chrome.google.com/webstore/detail/export-svg-with-style/dkjdcaddoplepioppogpckelchefhddi)
+- A javascript text differencing implementation. : [https://github.com/kpdecker/jsdiff](https://github.com/kpdecker/jsdiff)
+- get colors in your node.js console : [https://github.com/Marak/colors.js](https://github.com/Marak/colors.js)
+- GitBook CodeGroup Plugin : [https://github.com/lwhiteley/gitbook-plugin-codegroup](https://github.com/lwhiteley/gitbook-plugin-codegroup)
 
 ## Author
 
