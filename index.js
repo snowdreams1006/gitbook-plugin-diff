@@ -112,7 +112,6 @@ module.exports = {
                     case "diffCss":
                         options = Object.assign({}, (options || {}),{"ignoreCase":false,"newlineIsToken":false});
                         diff = Diff.diffCss(oldStr, newStr,options);
-
                         diff.forEach(function(part){
                             var modifier = part.added ? "+ " : part.removed ? "- " : "  ";
                             showDiffCode += modifier + part.value + '\n';
@@ -167,16 +166,7 @@ module.exports = {
                         showDiffCode += "]";
                         break;
                 }
-                // if(method == "diffJson"){
-                    
-                // }else if (method == "diffArrays"){
-                    
-                // }else{
-                //     diff.forEach(function(part){
-                //         var modifier = part.added ? "+ " : part.removed ? "- " : "  ";
-                //         showDiffCode += modifier + part.value + '\n';
-                //     });
-                // }
+                
                 markdownCode = '```diff\n'+showDiffCode+'```';
                 return new Promise(resolve => {
                     resolve(this.book.renderBlock('markdown', markdownCode) .then(function(html) {
