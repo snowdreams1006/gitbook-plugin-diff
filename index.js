@@ -52,30 +52,60 @@ module.exports = {
                     case "diffChars":
                         options = Object.assign({}, (options || {}),{"ignoreCase":false});
                         diff = Diff.diffChars(oldStr, newStr,options);
+                        diff.forEach(function(part){
+                            var modifier = part.added ? "+ " : part.removed ? "- " : "  ";
+                            showDiffCode += modifier + part.value + "\n";
+                        });
                       break; 
                     case "diffWords":
                         options = Object.assign({}, (options || {}),{"ignoreCase":false});
                         diff = Diff.diffWords(oldStr, newStr,options);
+                        diff.forEach(function(part){
+                            var modifier = part.added ? "+ " : part.removed ? "- " : "  ";
+                            showDiffCode += modifier + part.value + "\n";
+                        });
                         break; 
                     case "diffWordsWithSpace":
                         options = Object.assign({}, (options || {}),{"ignoreCase":false});
                         diff = Diff.diffWordsWithSpace(oldStr, newStr,options);
+                        diff.forEach(function(part){
+                            var modifier = part.added ? "+ " : part.removed ? "- " : "  ";
+                            showDiffCode += modifier + part.value + "\n";
+                        });
                         break; 
                     case "diffLines":
                         options = Object.assign({}, (options || {}),{"ignoreCase":false,"newlineIsToken":false});
                         diff = Diff.diffLines(oldStr, newStr,options);
+                        diff.forEach(function(part){
+                            var modifier = part.added ? "+ " : part.removed ? "- " : "  ";
+                            showDiffCode += modifier + part.value + "\n";
+                        });
                         break; 
                     case "diffTrimmedLines":
                         options = Object.assign({}, (options || {}),{"ignoreCase":false,"newlineIsToken":false});
                         diff = Diff.diffTrimmedLines(oldStr, newStr,options);
+                        diff.forEach(function(part){
+                            var modifier = part.added ? "+ " : part.removed ? "- " : "  ";
+                            showDiffCode += modifier + part.value + "\n";
+                        });
                         break; 
                     case "diffSentences":
                         options = Object.assign({}, (options || {}),{"ignoreCase":false,"newlineIsToken":false});
                         diff = Diff.diffSentences(oldStr, newStr,options);
+
+                        diff.forEach(function(part){
+                            var modifier = part.added ? "+ " : part.removed ? "- " : "  ";
+                            showDiffCode += modifier + part.value + '\n';
+                        });
                         break; 
                     case "diffCss":
                         options = Object.assign({}, (options || {}),{"ignoreCase":false,"newlineIsToken":false});
                         diff = Diff.diffCss(oldStr, newStr,options);
+
+                        diff.forEach(function(part){
+                            var modifier = part.added ? "+ " : part.removed ? "- " : "  ";
+                            showDiffCode += modifier + part.value + '\n';
+                        });
                         break; 
                     case "diffJson":
                         options = Object.assign({}, (options || {}),{"ignoreCase":false,"newlineIsToken":false});
@@ -86,6 +116,20 @@ module.exports = {
                             newStr = JSON.parse(newStr);
                         }
                         diff = Diff.diffJson(oldStr, newStr);
+                        var diffObj = [];
+                        diff.forEach(function(part){
+                            var modifier = part.added ? "+   " : part.removed ? "-   " : "    ";
+                            part.value.split("\n").forEach(function(item){
+                                item = item.trim();
+                                if(item){
+                                    if(item == "{" || item == "}"){
+                                        showDiffCode +=  item + "\n";
+                                    }else{
+                                        showDiffCode += modifier + item + "\n";
+                                    }
+                                }
+                            });
+                        });
                         break;
                     case "diffArrays":
                         if(Object.prototype.toString.call(oldStr) === '[object String]'){
@@ -95,45 +139,33 @@ module.exports = {
                             newStr = JSON.parse(newStr);
                         }
                         diff = Diff.diffArrays(oldStr, newStr);
+                        var diffArr = [];
+                        diff.forEach(function(part){
+                            var modifier = part.added ? "+   " : part.removed ? "-   " : "    ";
+                            part.value.forEach(function(item){
+                                item = item.trim();
+                                if(item){
+                                    diffArr.push(modifier + item);
+                                }
+                            });
+                        });
+                        showDiffCode += "[\n";
+                        diffArr.forEach(function(diffItem){
+                            showDiffCode += diffItem + "\n";
+                        });
+                        showDiffCode += "]";
                         break;
                 }
-                if(method == "diffJson"){
-                    var diffObj = [];
-                    diff.forEach(function(part){
-                        var modifier = part.added ? "+   " : part.removed ? "-   " : "    ";
-                        part.value.split("\n").forEach(function(item){
-                            item = item.trim();
-                            if(item){
-                                if(item == "{" || item == "}"){
-                                    showDiffCode +=  item + '\n';
-                                }else{
-                                    showDiffCode += modifier + item + '\n';
-                                }
-                            }
-                        });
-                    });
-                }else if (method == "diffArrays"){
-                    var diffArr = [];
-                    diff.forEach(function(part){
-                        var modifier = part.added ? "+   " : part.removed ? "-   " : "    ";
-                        part.value.forEach(function(item){
-                            item = item.trim();
-                            if(item){
-                                diffArr.push(modifier + item);
-                            }
-                        });
-                    });
-                    showDiffCode += '[  \n';
-                    diffArr.forEach(function(diffItem){
-                        showDiffCode += diffItem + "\n";
-                    });
-                    showDiffCode += ']'
-                }else{
-                    diff.forEach(function(part){
-                        var modifier = part.added ? "+ " : part.removed ? "- " : "  ";
-                        showDiffCode += modifier + part.value + '\n';
-                    });
-                }
+                // if(method == "diffJson"){
+                    
+                // }else if (method == "diffArrays"){
+                    
+                // }else{
+                //     diff.forEach(function(part){
+                //         var modifier = part.added ? "+ " : part.removed ? "- " : "  ";
+                //         showDiffCode += modifier + part.value + '\n';
+                //     });
+                // }
                 markdownCode = '```diff\n'+showDiffCode+'```';
                 return new Promise(resolve => {
                     resolve(this.book.renderBlock('markdown', markdownCode) .then(function(html) {
