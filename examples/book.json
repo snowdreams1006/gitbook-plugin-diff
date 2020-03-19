@@ -1,7 +1,7 @@
 {
-    "title": "icp example",
+    "title": "diff example",
     "author": "snowdreams1006",
-    "description": "gitbook-plugin-icp example",
+    "description": "gitbook-plugin-diff example",
     "gitbook": "3.2.3",
     "links": {
         "sidebar": {
@@ -10,7 +10,7 @@
     },
     "plugins": [
         "favicon-absolute",
-        "icp"
+        "diff"
     ],
     "pluginsConfig": {
         "favicon-absolute": {
@@ -27,8 +27,8 @@
                 "180x180": "/apple-touch-icon-precomposed-180.png"
             }
         },
-        "icp": {
-            "number":"浙ICP备18042346号"
+        "diff": {
+            "method": "diffJson"
         }
     }
 }
