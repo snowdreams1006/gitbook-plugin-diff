@@ -22,347 +22,6 @@
 
 ## Screenshot
 
-### `Diff.diffChars(oldStr, newStr[, options])`
-
-> diffs two blocks of text, comparing character by character.
-
-**Return**
-
-Returns a list of change objects (See below).
-
-**Option**
-
-- `ignoreCase`: `true` to ignore casing difference. Defaults to `false`.
-
-**Examples**
-
-- usage 
-
-> set `method="diffChars"` to call `Diff.diffChars(oldStr, newStr[, options])` method
-
-````markdown
-{% diff method="diffChars" %}
-```js
-cat
-```
-
-```js
-cap
-```
-{% enddiff %}
-````
-
-- preview 
-
-{% diff method="diffChars" %}
-```js
-cat
-```
-
-```js
-cap
-```
-{% enddiff %}
-
-
-### `Diff.diffWords(oldStr, newStr[, options])`
-
-> diffs two blocks of text, comparing word by word, ignoring whitespace.
-
-**Return**
-
-Returns a list of change objects (See below).
-
-**Option**
-
-- `ignoreCase`: Same as in `diffChars`.
-
-**Examples**
-
-- usage 
-
-> set `method="diffWords"` to call `Diff.diffWords(oldStr, newStr[, options])` method
-
-````markdown
-{% diff method="diffWords" %}
-```bash
-beep boop  
-```
-
-```bash
-beep boob blah
-```
-{% enddiff %}
-````
-
-- preview 
-
-{% diff method="diffWords" %}
-```bash
-beep boop
-```
-
-```bash
-beep boob blah
-```
-{% enddiff %}
-
-### `Diff.diffWordsWithSpace(oldStr, newStr[, options])`
-
-> diffs two blocks of text, comparing word by word, treating whitespace as significant.
-
-**Return**
-
-Returns a list of change objects (See below).
-
-**Option**
-
-- `ignoreCase`: Same as in `diffWords`.
-
-**Examples**
-
-- usage 
-
-> set `method="diffWordsWithSpace"` to call `Diff.diffWordsWithSpace(oldStr, newStr[, options])` method
-
-````markdown
-{% diff method="diffWordsWithSpace" %}
-```bash
-beep boop  
-```
-
-```bash
-beep boob blah
-```
-{% enddiff %}
-````
-
-- preview 
-
-{% diff method="diffWordsWithSpace" %}
-```bash
-beep boop
-```
-
-```bash
-beep boob blah
-```
-{% enddiff %}
-
-### `Diff.diffLines(oldStr, newStr[, options])`
-
-> diffs two blocks of text, comparing line by line.
-
-**Return**
-
-Returns a list of change objects (See below).
-
-**Option**
-
-- `ignoreWhitespace`: `true` to ignore leading and trailing whitespace. This is the same as `diffTrimmedLines`
-- `newlineIsToken`: `true` to treat newline characters as separate tokens.  This allows for changes to the newline structure to occur independently of the line content and to be treated as such. In general this is the more human friendly form of `diffLines` and `diffLines` is better suited for patches and other computer friendly output.
-
-**Examples**
-
-- usage 
-
-> set `method="diffLines"` to call `Diff.diffLines(oldStr, newStr[, options])` method
-
-````markdown
-{% diff method="diffLines",options={"newlineIsToken":true} %}
-```bash
-beep boop
-the cat is palying with cap
-what
-```
-
-```bash
-beep boob blah
-the cat is palying with cap
-who
-```
-{% enddiff %}
-````
-
-- preview 
-
-{% diff method="diffLines",options={"newlineIsToken":true} %}
-```bash
-beep boop
-the cat is palying with cap
-what
-```
-
-```bash
-beep boob blah
-the cat is palying with cap
-who
-```
-{% enddiff %}
-
-### `Diff.diffTrimmedLines(oldStr, newStr[, options])`
-
-> diffs two blocks of text, comparing line by line, ignoring leading and trailing whitespace.
-
-**Return**
-
-Returns a list of change objects (See below).
-
-**Option**
-
-- `ignoreWhitespace`: Same as in `diffLines`.
-- `newlineIsToken`: Same as in `diffLines`.
-
-**Examples**
-
-- usage 
-
-> set `method="diffTrimmedLines"` to call `Diff.diffTrimmedLines(oldStr, newStr[, options])` method
-
-````markdown
-{% diff method="diffTrimmedLines",options={"newlineIsToken":true} %}
-```bash
-beep boop
-the cat is palying with cap
-what
-```
-
-```bash
-beep boob blah
-the cat is palying with cat
-who
-```
-{% enddiff %}
-````
-
-- preview 
-
-{% diff method="diffTrimmedLines",options={"newlineIsToken":true} %}
-```bash
-beep boop
-the cat is palying with cap
-what
-```
-
-```bash
-beep boob blah
-the cat is palying with cat
-who
-```
-{% enddiff %}
-
-### `Diff.diffSentences(oldStr, newStr[, options])`
-
-> diffs two blocks of text, comparing sentence by sentence.
-
-**Return**
-
-Returns a list of change objects (See below).
-
-**Examples**
-
-- usage 
-
-> set `method="diffSentences"` to call `Diff.diffSentences(oldStr, newStr[, options])` method
-
-````markdown
-{% diff method="diffSentences" %}
-```bash
-beep boop
-the cat is palying with cap
-what
-```
-
-```bash
-beep boob blah
-the cat is palying with cat
-who
-```
-{% enddiff %}
-````
-
-- preview 
-
-{% diff method="diffSentences" %}
-```bash
-beep boop
-the cat is palying with cap
-what
-```
-
-```bash
-beep boob blah
-the cat is palying with cap
-who
-```
-{% enddiff %}
-
-### `Diff.diffCss(oldStr, newStr[, options])`
-
-> diffs two blocks of text, comparing CSS tokens.
-
-**Return**
-
-Returns a list of change objects (See below).
-
-**Examples**
-
-- usage 
-
-> set `method="diffCss"` to call `Diff.diffCss(oldStr, newStr[, options])` method
-
-````markdown
-{% diff method="diffCss" %}
-```css
-.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
-    margin-top: 1.275em;
-    margin-bottom: .85em;
-    font-weight: 700;
-}
-```
-
-```css
-.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
-    margin-top: 1.5em;
-    margin-bottom: 1em;
-}
-```
-{% enddiff %}
-````
-
-- preview 
-
-{% diff method="diffCss" %}
-```css
-.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
-    margin-top: 1.275em;
-    margin-bottom: .85em;
-    font-weight: 700;
-}
-```
-
-```css
-.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
-    margin-top: 1.5em;
-    margin-bottom: 1em;
-}
-```
-{% enddiff %}
-
-### `Diff.diffJson(oldObj, newObj[, options])`
-
-> diffs two JSON objects, comparing the fields defined on each. The order of fields, etc does not matter in this comparison.
-
-**Return**
-
-Returns a list of change objects (See below).
-
-**Examples**
-
-- usage 
-
-> set `method="diffJson"` to call `Diff.diffJson(oldObj, newObj[, options])` method
-
 ````markdown
 {% diff method="diffJson" %}
 ```json
@@ -383,8 +42,6 @@ Returns a list of change objects (See below).
 {% enddiff %}
 ````
 
-- preview 
-
 {% diff method="diffJson" %}
 ```json
 {
@@ -403,103 +60,193 @@ Returns a list of change objects (See below).
 ```
 {% enddiff %}
 
-### `Diff.diffArrays(oldArr, newArr[, options])`
+## Usage
 
-> diffs two arrays, comparing each item for strict equality (===).
+### Step #1 - Update `book.json` file
 
-**Return**
+In you gitbook's `book.json` file, add `simple-mind-map` to `plugins` list.
 
-Returns a list of change objects (See below).
-
-**Options**
-
-- `comparator`: `function(left, right)` for custom equality checks
-
-**Examples**
-
-- usage 
-
-> set `method="diffArrays"` to call `Diff.diffArrays(oldArr, newArr[, options])` method
-
-````markdown
-{% diff method="diffArrays" %}
-```json
-[
-    "Vue",
-    "Python",
-    "Java",
-    "flutter",
-    "springboot",
-    "docker",
-    "React",
-    "小程序"
-]
-```
+Here is simplest example :
 
 ```json
-[
-    "Vuejs",
-    "Nodejs",
-    "Java",
-    "flutter",
-    "springboot",
-    "docker",
-    "React"
-]
+{
+    "plugins": ["simple-mind-map"]
+}
 ```
-{% enddiff %}
+
+In addition, the supported configuration options are as follows : 
+
+```json
+"gitbook": {
+    "properties": {
+        "type": {
+            "type": "string",
+            "title": "Markdown or MindMup or Txtmap or Pandoc",
+            "required": false,
+            "default": "markdown"
+        },
+        "preset": {
+            "type": "string",
+            "title": "colorful or default",
+            "required": false,
+            "default": "colorful"
+        },
+        "linkShape": {
+            "type": "string",
+            "title": "diagonal or bracket",
+            "required": false,
+            "default": "diagonal"
+        },
+        "autoFit": {
+            "type": "boolean",
+            "title": "true or false",
+            "required": false,
+            "default": true
+        },
+        "style": {
+            "type": "object",
+            "title": "custom style",
+            "required": false
+        }
+    }
+}
+```
+
+### Step #2 - Use in markdown file
+
+`simplemindmap` support `type`,`preset`,`linkShape`,`autoFit` and `style` options for generating mind map.
+
+Here is basic grammar in your markdown file :
+
+````
+{% simplemindmap %}
+```
+simple mind map
+```
+{% endsimplemindmap %}
 ````
 
-- preview 
+And there are some examples :
 
-{% diff method="diffArrays" %}
+
+### Step #3 - Run gitbook commands
+
+1. Run `gitbook install`. It will automatically install `simple-mind-map` gitbook plugin for your book. This is needed only once.
+
+```bash
+gitbook install
+```
+
+or you can run `npm install gitbook-plugin-simple-mind-map` to install locally.
+
+```bash
+npm install gitbook-plugin-simple-mind-map
+```
+
+2. Build your book (`gitbook build`) or serve (`gitbook serve`) as usual.
+
+```bash
+gitbook serve
+```
+
+
+## Example
+
+- Official documentation configuration file
+
+> [https://github.com/snowdreams1006/gitbook-plugin-simple-mind-map/blob/master/docs/book.json](https://github.com/snowdreams1006/gitbook-plugin-simple-mind-map/blob/master/docs/book.json)
+
 ```json
-[
-    "Vue",
-    "Python",
-    "Java",
-    "flutter",
-    "springboot",
-    "docker",
-    "React",
-    "小程序"
-]
+{
+    "plugins": ["simple-mind-map"],
+    "pluginsConfig": {
+        "simple-mind-map": {
+            "type": "markdown",
+            "preset": "colorful",
+            "linkShape": "diagonal"
+        }
+    }
+}
 ```
+
+- Official example configuration file
+
+> [https://github.com/snowdreams1006/gitbook-plugin-simple-mind-map/blob/master/example/book.json](https://github.com/snowdreams1006/gitbook-plugin-simple-mind-map/blob/master/example/book.json)
 
 ```json
-[
-    "Vuejs",
-    "Nodejs",
-    "Java",
-    "flutter",
-    "springboot",
-    "docker",
-    "React"
-]
-```
-{% enddiff %}
-
-
-
-
-
-
-
-``` diff
-  webpack-demo
-  |- package.json
-+ |- index.html
-+ |- /src
-+   |- index.js
+{
+    "plugins": ["simple-mind-map"],
+    "pluginsConfig": {
+        "simple-mind-map": {
+            "type": "markdown"
+        }
+    }
+}
 ```
 
-- multilingual
+- Sample `book.json` file 
 
-![diff-multilingual-index-use-preview.png](./diff-multilingual-index-use-preview.png)
+```json
+{
+    "plugins": ["simple-mind-map"]
+}
+```
 
-- monolingual
+or you can set `type` as your default language type:
 
-![diff-monolingual-index-use-preview.png](./diff-monolingual-index-use-preview.png)
+```json
+{
+    "plugins": ["simple-mind-map"],
+    "pluginsConfig": {
+        "simple-mind-map": {
+            "type": "markdown"
+        }
+    }
+}
+```
+
+or you can set `preset` or `linkShape` and `autoFit` as your default settings:
+
+```json
+{
+    "plugins": ["simple-mind-map"],
+    "pluginsConfig": {
+        "simple-mind-map": {
+            "type": "markdown",
+            "preset": "colorful",
+            "linkShape": "diagonal",
+            "autoFit": true
+        }
+    }
+}
+```
+
+or you can add `style` to custom your style of mind map:
+
+```json
+{
+    "plugins": ["simple-mind-map"],
+    "pluginsConfig": {
+        "simple-mind-map": {
+            "type": "markdown",
+            "preset": "colorful",
+            "linkShape": "diagonal",
+            "autoFit": true,
+            "style": {
+              "height":  "750px"
+            }
+        }
+    }
+}
+```
+
+**Note**: Above snippet can be used as complete `book.json` file, if your book doesn't have one yet.
+
+## Thanks
+
+- Visualize markdown documents as mindmaps : [https://github.com/dundalek/markmap](https://github.com/dundalek/markmap)
+- A GitBook plugin for generating mindmaps within Markdown : [https://github.com/aleen42/gitbook-mindmaps](https://github.com/aleen42/gitbook-mindmaps)
+- Export SVG with Style : [https://chrome.google.com/webstore/detail/export-svg-with-style/dkjdcaddoplepioppogpckelchefhddi](https://chrome.google.com/webstore/detail/export-svg-with-style/dkjdcaddoplepioppogpckelchefhddi)
 
 ## Author
 
@@ -511,11 +258,11 @@ Returns a list of change objects (See below).
 
 ## Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/snowdreams1006/gitbook-plugin-diff/issues).
+Contributions, issues and feature requests are welcome! Feel free to check [issues page](https://github.com/snowdreams1006/gitbook-plugin-diff/issues).
 
 ## Show your support
 
-Give a [**Star**](https://github.com/snowdreams1006/gitbook-plugin-diff) if this project helped you!
+Give a [Star](https://github.com/snowdreams1006/gitbook-plugin-diff) if this project helped you!
 
 ## Copyright
 
