@@ -98,7 +98,7 @@ module.exports = {
                         break; 
                 }
                 diff.forEach(function(part){
-                    var modifier = part.added ? "+ " : part.removed ? "- " : " ";
+                    var modifier = part.added ? "+ " : part.removed ? "- " : "  ";
                     showDiffCode += modifier + part.value + '\n';
                 });
 
