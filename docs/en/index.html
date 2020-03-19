@@ -368,7 +368,6 @@
 <blockquote>
 <p>A gitbook plugin for showing the differences between the codes within markdown</p>
 </blockquote>
-<p><a href="./">English</a> | <a href="README_zh.md">&#x4E2D;&#x6587;</a></p>
 <h3 id="&#x1F3E0;-homepage">&#x1F3E0; <a href="https://github.com/snowdreams1006/gitbook-plugin-diff#readme" target="_blank">Homepage</a></h3>
 <ul>
 <li>Github : <a href="https://snowdreams1006.github.io/gitbook-plugin-diff/" target="_blank">https://snowdreams1006.github.io/gitbook-plugin-diff/</a></li>
@@ -377,13 +376,536 @@
 </ul>
 <h2 id="screenshot">Screenshot</h2>
 <ul>
-<li>multilingual</li>
+<li>usage</li>
 </ul>
-<p><img src="diff-multilingual-index-use-preview.png" alt="diff-multilingual-index-use-preview.png"></p>
+<pre><code class="lang-markdown">{% diff method=&quot;diffJson&quot; %}
+<span class="hljs-code">```</span>json
+{
+  &quot;name&quot;: &quot;gitbook-plugin-simple-mind-map&quot;,
+  &quot;version&quot;: &quot;0.2.1&quot;,
+  &quot;description&quot;: &quot;A gitBook plugin for generating and exporting mind map within markdown&quot;
+}
+<span class="hljs-code">```</span>
+<span class="hljs-code">```</span>json
+{
+  &quot;name&quot;: &quot;gitbook-plugin-diff&quot;,
+  &quot;version&quot;: &quot;0.2.1&quot;,
+  &quot;description&quot;: &quot;A gitbook plugin for showing the differences between the codes within markdown&quot;
+}
+<span class="hljs-code">```</span>
+{% enddiff %}
+</code></pre>
 <ul>
-<li>monolingual</li>
+<li>preview</li>
 </ul>
-<p><img src="diff-monolingual-index-use-preview.png" alt="diff-monolingual-index-use-preview.png"></p>
+<p><pre><code class="lang-diff">{
+<span class="hljs-deletion">-   &quot;description&quot;: &quot;A gitBook plugin for generating and exporting mind map within markdown&quot;,</span>
+<span class="hljs-addition">+   &quot;description&quot;: &quot;A gitbook plugin for showing the differences between the codes within markdown&quot;,</span>
+    &quot;name&quot;: &quot;gitbook-plugin-diff&quot;,
+    &quot;version&quot;: &quot;0.2.1&quot;
+}
+</code></pre>
+</p>
+<h2 id="usage">Usage</h2>
+<h3 id="step-1---update-bookjson-file">Step #1 - Update <code>book.json</code> file</h3>
+<p>In you gitbook&apos;s <code>book.json</code> file, add <code>diff</code> to <code>plugins</code> list.</p>
+<p>Here is simplest example :</p>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;plugins&quot;</span>: [<span class="hljs-string">&quot;diff&quot;</span>]
+}
+</code></pre>
+<p>In addition, the supported configuration options are as follows : </p>
+<pre><code class="lang-json"><span class="hljs-string">&quot;gitbook&quot;</span>: {
+    <span class="hljs-string">&quot;properties&quot;</span>: {
+        <span class="hljs-string">&quot;method&quot;</span>: {
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+            <span class="hljs-string">&quot;title&quot;</span>: <span class="hljs-string">&quot;jsdiff api method&quot;</span>,
+            <span class="hljs-string">&quot;required&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-string">&quot;default&quot;</span>: <span class="hljs-string">&quot;diffLines&quot;</span>,
+            <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;some supported methods such as diffChars or diffWords or diffWordsWithSpace or diffLines or diffTrimmedLines or diffSentences or diffCss or diffJson or diffArrays&quot;</span>
+        },
+        <span class="hljs-string">&quot;options&quot;</span>: {
+            <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+            <span class="hljs-string">&quot;title&quot;</span>: <span class="hljs-string">&quot;jsdiff api options&quot;</span>,
+            <span class="hljs-string">&quot;required&quot;</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-string">&quot;description&quot;</span>: <span class="hljs-string">&quot;some methods may not support options&quot;</span>
+        }
+    }
+}
+</code></pre>
+<h3 id="step-2---use-in-markdown-file">Step #2 - Use in markdown file</h3>
+<p><code>diff</code> support <code>method</code> and <code>options</code> for generating diff block code.</p>
+<p>Here is basic grammar in your markdown file :</p>
+<pre><code>{% diff %}
+```
+old code
+```
+```
+new code
+```
+{% enddiff %}
+</code></pre><p>And there are some examples :</p>
+<h4 id="diffdiffcharsoldstr-newstr-options"><code>Diff.diffChars(oldStr, newStr[, options])</code></h4>
+<blockquote>
+<p>diffs two blocks of text, comparing character by character.</p>
+</blockquote>
+<p><strong>Return</strong></p>
+<p>Returns a list of change objects (See below).</p>
+<p><strong>Option</strong></p>
+<ul>
+<li><code>ignoreCase</code>: <code>true</code> to ignore casing difference. Defaults to <code>false</code>.</li>
+</ul>
+<p><strong>Examples</strong></p>
+<ul>
+<li>usage </li>
+</ul>
+<blockquote>
+<p>set <code>method=&quot;diffChars&quot;</code> to call <code>Diff.diffChars(oldStr, newStr[, options])</code> method</p>
+</blockquote>
+<pre><code class="lang-markdown">{% diff method=&quot;diffChars&quot; %}
+<span class="hljs-code">```</span>js
+cat
+<span class="hljs-code">```</span>
+<span class="hljs-code">```</span>js
+cap
+<span class="hljs-code">```</span>
+{% enddiff %}
+</code></pre>
+<ul>
+<li>preview </li>
+</ul>
+<p><pre><code class="lang-diff">  ca
+<span class="hljs-deletion">- t</span>
+<span class="hljs-addition">+ p</span>
+</code></pre>
+</p>
+<h4 id="diffdiffwordsoldstr-newstr-options"><code>Diff.diffWords(oldStr, newStr[, options])</code></h4>
+<blockquote>
+<p>diffs two blocks of text, comparing word by word, ignoring whitespace.</p>
+</blockquote>
+<p><strong>Return</strong></p>
+<p>Returns a list of change objects (See below).</p>
+<p><strong>Option</strong></p>
+<ul>
+<li><code>ignoreCase</code>: Same as in <code>diffChars</code>.</li>
+</ul>
+<p><strong>Examples</strong></p>
+<ul>
+<li>usage </li>
+</ul>
+<blockquote>
+<p>set <code>method=&quot;diffWords&quot;</code> to call <code>Diff.diffWords(oldStr, newStr[, options])</code> method</p>
+</blockquote>
+<pre><code class="lang-markdown">{% diff method=&quot;diffWords&quot; %}
+<span class="hljs-code">```</span>bash
+beep boop
+<span class="hljs-code">```</span>
+<span class="hljs-code">```</span>bash
+beep boob blah
+<span class="hljs-code">```</span>
+{% enddiff %}
+</code></pre>
+<ul>
+<li>preview </li>
+</ul>
+<p><pre><code class="lang-diff">  beep 
+<span class="hljs-deletion">- boop</span>
+<span class="hljs-addition">+ boob</span>
+
+<span class="hljs-addition">+ blah</span>
+</code></pre>
+</p>
+<h4 id="diffdiffwordswithspaceoldstr-newstr-options"><code>Diff.diffWordsWithSpace(oldStr, newStr[, options])</code></h4>
+<blockquote>
+<p>diffs two blocks of text, comparing word by word, treating whitespace as significant.</p>
+</blockquote>
+<p><strong>Return</strong></p>
+<p>Returns a list of change objects (See below).</p>
+<p><strong>Option</strong></p>
+<ul>
+<li><code>ignoreCase</code>: Same as in <code>diffWords</code>.</li>
+</ul>
+<p><strong>Examples</strong></p>
+<ul>
+<li>usage </li>
+</ul>
+<blockquote>
+<p>set <code>method=&quot;diffWordsWithSpace&quot;</code> to call <code>Diff.diffWordsWithSpace(oldStr, newStr[, options])</code> method</p>
+</blockquote>
+<pre><code class="lang-markdown">{% diff method=&quot;diffWordsWithSpace&quot; %}
+<span class="hljs-code">```</span>bash
+beep boop  
+<span class="hljs-code">```</span>
+<span class="hljs-code">```</span>bash
+beep boob blah
+<span class="hljs-code">```</span>
+{% enddiff %}
+</code></pre>
+<ul>
+<li>preview </li>
+</ul>
+<p><pre><code class="lang-diff">  beep 
+<span class="hljs-deletion">- boop</span>
+<span class="hljs-addition">+ boob blah</span>
+</code></pre>
+</p>
+<h4 id="diffdifflinesoldstr-newstr-options"><code>Diff.diffLines(oldStr, newStr[, options])</code></h4>
+<blockquote>
+<p>diffs two blocks of text, comparing line by line.</p>
+</blockquote>
+<p><strong>Return</strong></p>
+<p>Returns a list of change objects (See below).</p>
+<p><strong>Option</strong></p>
+<ul>
+<li><code>ignoreWhitespace</code>: <code>true</code> to ignore leading and trailing whitespace. This is the same as <code>diffTrimmedLines</code></li>
+<li><code>newlineIsToken</code>: <code>true</code> to treat newline characters as separate tokens.  This allows for changes to the newline structure to occur independently of the line content and to be treated as such. In general this is the more human friendly form of <code>diffLines</code> and <code>diffLines</code> is better suited for patches and other computer friendly output.</li>
+</ul>
+<p><strong>Examples</strong></p>
+<ul>
+<li>usage </li>
+</ul>
+<blockquote>
+<p>set <code>method=&quot;diffLines&quot;</code> to call <code>Diff.diffLines(oldStr, newStr[, options])</code> method</p>
+</blockquote>
+<pre><code class="lang-markdown">{% diff method=&quot;diffLines&quot;,options={&quot;newlineIsToken&quot;:true} %}
+<span class="hljs-code">```</span>bash
+beep boop
+the cat is palying with cap
+what
+<span class="hljs-code">```</span>
+<span class="hljs-code">```</span>bash
+beep boob blah
+the cat is palying with cap
+who
+<span class="hljs-code">```</span>
+{% enddiff %}
+</code></pre>
+<ul>
+<li>preview </li>
+</ul>
+<p><pre><code class="lang-diff"><span class="hljs-deletion">- beep boop</span>
+
+<span class="hljs-addition">+ beep boob blah</span>
+
+  the cat is palying with cap
+
+<span class="hljs-deletion">- what</span>
+
+<span class="hljs-addition">+ who</span>
+</code></pre>
+</p>
+<h4 id="diffdifftrimmedlinesoldstr-newstr-options"><code>Diff.diffTrimmedLines(oldStr, newStr[, options])</code></h4>
+<blockquote>
+<p>diffs two blocks of text, comparing line by line, ignoring leading and trailing whitespace.</p>
+</blockquote>
+<p><strong>Return</strong></p>
+<p>Returns a list of change objects (See below).</p>
+<p><strong>Option</strong></p>
+<ul>
+<li><code>ignoreWhitespace</code>: Same as in <code>diffLines</code>.</li>
+<li><code>newlineIsToken</code>: Same as in <code>diffLines</code>.</li>
+</ul>
+<p><strong>Examples</strong></p>
+<ul>
+<li>usage </li>
+</ul>
+<blockquote>
+<p>set <code>method=&quot;diffTrimmedLines&quot;</code> to call <code>Diff.diffTrimmedLines(oldStr, newStr[, options])</code> method</p>
+</blockquote>
+<pre><code class="lang-markdown">{% diff method=&quot;diffTrimmedLines&quot;,options={&quot;newlineIsToken&quot;:true} %}
+<span class="hljs-code">```</span>bash
+beep boop
+the cat is palying with cap
+what
+<span class="hljs-code">```</span>
+<span class="hljs-code">```</span>bash
+beep boob blah
+the cat is palying with cat
+who
+<span class="hljs-code">```</span>
+{% enddiff %}
+</code></pre>
+<ul>
+<li>preview </li>
+</ul>
+<p><pre><code class="lang-diff"><span class="hljs-deletion">- beep boop</span>
+  the cat is palying with cap
+  what
+
+<span class="hljs-addition">+ beep boob blah</span>
+  the cat is palying with cat
+  who
+</code></pre>
+</p>
+<h4 id="diffdiffsentencesoldstr-newstr-options"><code>Diff.diffSentences(oldStr, newStr[, options])</code></h4>
+<blockquote>
+<p>diffs two blocks of text, comparing sentence by sentence.</p>
+</blockquote>
+<p><strong>Return</strong></p>
+<p>Returns a list of change objects (See below).</p>
+<p><strong>Examples</strong></p>
+<ul>
+<li>usage </li>
+</ul>
+<blockquote>
+<p>set <code>method=&quot;diffSentences&quot;</code> to call <code>Diff.diffSentences(oldStr, newStr[, options])</code> method</p>
+</blockquote>
+<pre><code class="lang-markdown">{% diff method=&quot;diffSentences&quot; %}
+<span class="hljs-code">```</span>bash
+beep boop
+the cat is palying with cap
+what
+<span class="hljs-code">```</span>
+<span class="hljs-code">```</span>bash
+beep boob blah
+the cat is palying with cat
+who
+<span class="hljs-code">```</span>
+{% enddiff %}
+</code></pre>
+<ul>
+<li>preview </li>
+</ul>
+<p><pre><code class="lang-diff"><span class="hljs-deletion">- beep boop</span>
+  the cat is palying with cap
+  what
+
+<span class="hljs-addition">+ beep boob blah</span>
+  the cat is palying with cap
+  who
+</code></pre>
+</p>
+<h4 id="diffdiffcssoldstr-newstr-options"><code>Diff.diffCss(oldStr, newStr[, options])</code></h4>
+<blockquote>
+<p>diffs two blocks of text, comparing CSS tokens.</p>
+</blockquote>
+<p><strong>Return</strong></p>
+<p>Returns a list of change objects (See below).</p>
+<p><strong>Examples</strong></p>
+<ul>
+<li>usage </li>
+</ul>
+<blockquote>
+<p>set <code>method=&quot;diffCss&quot;</code> to call <code>Diff.diffCss(oldStr, newStr[, options])</code> method</p>
+</blockquote>
+<pre><code class="lang-markdown">{% diff method=&quot;diffCss&quot; %}
+<span class="hljs-code">```</span>css
+.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
+<span class="hljs-code">    margin-top: 1.275em;</span>
+<span class="hljs-code">    margin-bottom: .85em;</span>
+<span class="hljs-code">    font-weight: 700;</span>
+}
+<span class="hljs-code">```</span>
+<span class="hljs-code">```</span>css
+.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
+<span class="hljs-code">    margin-top: 1.5em;</span>
+<span class="hljs-code">    margin-bottom: 1em;</span>
+}
+<span class="hljs-code">```</span>
+{% enddiff %}
+</code></pre>
+<ul>
+<li>preview </li>
+</ul>
+<p><pre><code class="lang-diff">  .markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
+    margin-top: 
+<span class="hljs-deletion">- 1.275em</span>
+<span class="hljs-addition">+ 1.5em</span>
+  ;
+    margin-bottom: 
+<span class="hljs-deletion">- .85em</span>
+<span class="hljs-addition">+ 1em</span>
+  ;
+<span class="hljs-deletion">- </span>
+    font-weight: 700;
+
+}
+</code></pre>
+</p>
+<h4 id="diffdiffjsonoldobj-newobj-options"><code>Diff.diffJson(oldObj, newObj[, options])</code></h4>
+<blockquote>
+<p>diffs two JSON objects, comparing the fields defined on each. The order of fields, etc does not matter in this comparison.</p>
+</blockquote>
+<p><strong>Return</strong></p>
+<p>Returns a list of change objects (See below).</p>
+<p><strong>Examples</strong></p>
+<ul>
+<li>usage </li>
+</ul>
+<blockquote>
+<p>set <code>method=&quot;diffJson&quot;</code> to call <code>Diff.diffJson(oldObj, newObj[, options])</code> method</p>
+</blockquote>
+<pre><code class="lang-markdown">{% diff method=&quot;diffJson&quot; %}
+<span class="hljs-code">```</span>json
+{
+  &quot;name&quot;: &quot;gitbook-plugin-simple-mind-map&quot;,
+  &quot;version&quot;: &quot;0.2.1&quot;,
+  &quot;description&quot;: &quot;A gitBook plugin for generating and exporting mind map within markdown&quot;
+}
+<span class="hljs-code">```</span>
+<span class="hljs-code">```</span>json
+{
+  &quot;name&quot;: &quot;gitbook-plugin-diff&quot;,
+  &quot;version&quot;: &quot;0.2.1&quot;,
+  &quot;description&quot;: &quot;A gitbook plugin for showing the differences between the codes within markdown&quot;
+}
+<span class="hljs-code">```</span>
+{% enddiff %}
+</code></pre>
+<ul>
+<li>preview </li>
+</ul>
+<p><pre><code class="lang-diff">{
+<span class="hljs-deletion">-   &quot;description&quot;: &quot;A gitBook plugin for generating and exporting mind map within markdown&quot;,</span>
+<span class="hljs-deletion">-   &quot;name&quot;: &quot;gitbook-plugin-simple-mind-map&quot;,</span>
+<span class="hljs-addition">+   &quot;description&quot;: &quot;A gitbook plugin for showing the differences between the codes within markdown&quot;,</span>
+<span class="hljs-addition">+   &quot;name&quot;: &quot;gitbook-plugin-diff&quot;,</span>
+    &quot;version&quot;: &quot;0.2.1&quot;
+}
+</code></pre>
+</p>
+<h4 id="diffdiffarraysoldarr-newarr-options"><code>Diff.diffArrays(oldArr, newArr[, options])</code></h4>
+<blockquote>
+<p>diffs two arrays, comparing each item for strict equality (===).</p>
+</blockquote>
+<p><strong>Return</strong></p>
+<p>Returns a list of change objects (See below).</p>
+<p><strong>Options</strong></p>
+<ul>
+<li><code>comparator</code>: <code>function(left, right)</code> for custom equality checks</li>
+</ul>
+<p><strong>Examples</strong></p>
+<ul>
+<li>usage </li>
+</ul>
+<blockquote>
+<p>set <code>method=&quot;diffArrays&quot;</code> to call <code>Diff.diffArrays(oldArr, newArr[, options])</code> method</p>
+</blockquote>
+<pre><code class="lang-markdown">{% diff method=&quot;diffArrays&quot; %}
+<span class="hljs-code">```</span>json
+[
+<span class="hljs-code">    &quot;Vue&quot;,</span>
+<span class="hljs-code">    &quot;Python&quot;,</span>
+<span class="hljs-code">    &quot;Java&quot;,</span>
+<span class="hljs-code">    &quot;flutter&quot;,</span>
+<span class="hljs-code">    &quot;springboot&quot;,</span>
+<span class="hljs-code">    &quot;docker&quot;,</span>
+<span class="hljs-code">    &quot;React&quot;,</span>
+<span class="hljs-code">    &quot;&#x5C0F;&#x7A0B;&#x5E8F;&quot;</span>
+]
+<span class="hljs-code">```</span>
+<span class="hljs-code">```</span>json
+[
+<span class="hljs-code">    &quot;Vuejs&quot;,</span>
+<span class="hljs-code">    &quot;Nodejs&quot;,</span>
+<span class="hljs-code">    &quot;Java&quot;,</span>
+<span class="hljs-code">    &quot;flutter&quot;,</span>
+<span class="hljs-code">    &quot;springboot&quot;,</span>
+<span class="hljs-code">    &quot;docker&quot;,</span>
+<span class="hljs-code">    &quot;React&quot;</span>
+]
+<span class="hljs-code">```</span>
+{% enddiff %}
+</code></pre>
+<ul>
+<li>preview </li>
+</ul>
+<p><pre><code class="lang-diff">[
+<span class="hljs-deletion">-   Vue</span>
+<span class="hljs-deletion">-   Python</span>
+<span class="hljs-addition">+   Vuejs</span>
+<span class="hljs-addition">+   Nodejs</span>
+    Java
+    flutter
+    springboot
+    docker
+    React
+<span class="hljs-deletion">-   &#x5C0F;&#x7A0B;&#x5E8F;</span>
+]
+</code></pre>
+</p>
+<h3 id="step-3---run-gitbook-commands">Step #3 - Run gitbook commands</h3>
+<ol>
+<li>Run <code>gitbook install</code>. It will automatically install <code>diff</code> gitbook plugin for your book. This is needed only once.</li>
+</ol>
+<pre><code class="lang-bash">gitbook install
+</code></pre>
+<p>or you can run <code>npm install gitbook-plugin-diff</code> to install locally.</p>
+<pre><code class="lang-bash">npm install gitbook-plugin-diff
+</code></pre>
+<ol>
+<li>Build your book (<code>gitbook build</code>) or serve (<code>gitbook serve</code>) as usual.</li>
+</ol>
+<pre><code class="lang-bash">gitbook serve
+</code></pre>
+<h2 id="examples">Examples</h2>
+<ul>
+<li>Official documentation configuration file</li>
+</ul>
+<blockquote>
+<p><a href="https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/docs/book.json" target="_blank">https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/docs/book.json</a></p>
+</blockquote>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;plugins&quot;</span>: [<span class="hljs-string">&quot;diff&quot;</span>],
+    <span class="hljs-string">&quot;pluginsConfig&quot;</span>: {
+        <span class="hljs-string">&quot;diff&quot;</span>: {
+            <span class="hljs-string">&quot;method&quot;</span>: <span class="hljs-string">&quot;diffJson&quot;</span>
+        }
+    }
+}
+</code></pre>
+<ul>
+<li>Official example configuration file</li>
+</ul>
+<blockquote>
+<p><a href="https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/example/book.json" target="_blank">https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/example/book.json</a></p>
+</blockquote>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;plugins&quot;</span>: [<span class="hljs-string">&quot;diff&quot;</span>],
+    <span class="hljs-string">&quot;pluginsConfig&quot;</span>: {
+        <span class="hljs-string">&quot;diff&quot;</span>: {
+            <span class="hljs-string">&quot;method&quot;</span>: <span class="hljs-string">&quot;diffJson&quot;</span>
+        }
+    }
+}
+</code></pre>
+<ul>
+<li>Sample <code>book.json</code> file </li>
+</ul>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;plugins&quot;</span>: [<span class="hljs-string">&quot;diff&quot;</span>]
+}
+</code></pre>
+<p>or you can set <code>method</code> as your default method to compare between codes:</p>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;plugins&quot;</span>: [<span class="hljs-string">&quot;diff&quot;</span>],
+    <span class="hljs-string">&quot;pluginsConfig&quot;</span>: {
+        <span class="hljs-string">&quot;diff&quot;</span>: {
+            <span class="hljs-string">&quot;method&quot;</span>: <span class="hljs-string">&quot;diffChars&quot;</span>
+        }
+    }
+}
+</code></pre>
+<p>or you can set <code>options</code> as your default settings according to method:</p>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;plugins&quot;</span>: [<span class="hljs-string">&quot;diff&quot;</span>],
+    <span class="hljs-string">&quot;pluginsConfig&quot;</span>: {
+        <span class="hljs-string">&quot;diff&quot;</span>: {
+            <span class="hljs-string">&quot;method&quot;</span>: <span class="hljs-string">&quot;diffChars&quot;</span>,
+            <span class="hljs-string">&quot;options&quot;</span>: {
+              <span class="hljs-string">&quot;ignoreCase&quot;</span>: <span class="hljs-literal">true</span>
+            }
+        }
+    }
+}
+</code></pre>
+<p><strong>Note</strong>: Above snippet can be used as complete <code>book.json</code> file, if your book doesn&apos;t have one yet.</p>
+<h2 id="thanks">Thanks</h2>
+<ul>
+<li>A javascript text differencing implementation. : <a href="https://github.com/kpdecker/jsdiff" target="_blank">https://github.com/kpdecker/jsdiff</a></li>
+<li>get colors in your node.js console : <a href="https://github.com/Marak/colors.js" target="_blank">https://github.com/Marak/colors.js</a></li>
+<li>GitBook CodeGroup Plugin : <a href="https://github.com/lwhiteley/gitbook-plugin-codegroup" target="_blank">https://github.com/lwhiteley/gitbook-plugin-codegroup</a></li>
+</ul>
 <h2 id="author">Author</h2>
 <p>&#x1F464; <strong>snowdreams1006</strong></p>
 <ul>
@@ -392,16 +914,16 @@
 <li>Email: <a href="mailto:snowdreams1006@163.com" target="_blank">snowdreams1006@163.com</a></li>
 </ul>
 <h2 id="contributing">Contributing</h2>
-<p>Contributions, issues and feature requests are welcome!<br>Feel free to check <a href="https://github.com/snowdreams1006/gitbook-plugin-diff/issues" target="_blank">issues page</a>.</p>
+<p>Contributions, issues and feature requests are welcome! Feel free to check <a href="https://github.com/snowdreams1006/gitbook-plugin-diff/issues" target="_blank">issues page</a>.</p>
 <h2 id="show-your-support">Show your support</h2>
-<p>Give a <a href="https://github.com/snowdreams1006/gitbook-plugin-diff" target="_blank"><strong>Star</strong></a> if this project helped you!</p>
+<p>Give a <a href="https://github.com/snowdreams1006/gitbook-plugin-diff" target="_blank">Star</a> if this project helped you!</p>
 <h2 id="copyright">Copyright</h2>
 <p>Copyright &#xA9; 2019 <a href="https://github.com/snowdreams1006" target="_blank">snowdreams1006</a>.</p>
 <p>This project is <a href="https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/LICENSE" target="_blank">MIT</a> licensed.</p>
-<pre><code class="lang-html">Author: &#x96EA;&#x4E4B;&#x68A6;&#x6280;&#x672F;&#x9A7F;&#x7AD9;
+<pre><code class="lang-html">Author: snowdreams1006
 Url: https://snowdreams1006.github.io/gitbook-plugin-diff/en/
-Source: &#x96EA;&#x4E4B;&#x68A6;&#x6280;&#x672F;&#x9A7F;&#x7AD9;
-This article was originally published in&#x300C;&#x96EA;&#x4E4B;&#x68A6;&#x6280;&#x672F;&#x9A7F;&#x7AD9;&#x300D;,Reproduced please indicate the source, thank you for cooperation!
+Source: snowdreams1006.tech
+This article was originally published in&#x300C;snowdreams1006.tech&#x300D;,Reproduced please indicate the source, thank you for cooperation!
 </code></pre>
 <p><img src="https://snowdreams1006.github.io/snowdreams1006-wechat-open.png" alt="https://snowdreams1006.github.io/snowdreams1006-wechat-open.png"></p>
 <div id="gitalk-container"></div>
@@ -470,7 +992,7 @@ This article was originally published in&#x300C;&#x96EA;&#x4E4B;&#x68A6;&#x6280;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"gitbook-official","level":"1.2","depth":1,"url":"https://snowdreams1006.github.io/gitbook-official/","ref":"https://snowdreams1006.github.io/gitbook-official/","articles":[]},"dir":"ltr"},"config":{"plugins":["favicon-absolute","github-buttons","edit-link-plus","readmore","copyright","mygitalk","icp"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"copyright":{"site":"https://snowdreams1006.github.io/gitbook-plugin-diff","author":"雪之梦技术驿站","website":"雪之梦技术驿站","image":"https://snowdreams1006.github.io/snowdreams1006-wechat-open.png"},"search":{},"edit-link-plus":{"label":"Edit This Page","base":{"snowdreams1006.github.io":"https://github.com/snowdreams1006/gitbook-plugin-diff/edit/master/docs","snowdreams1006.gitlab.io":"https://gitlab.com/snowdreams1006/gitbook-plugin-diff/edit/master/docs","snowdreams1006.gitee.io":"https://gitee.com/snowdreams1006/gitbook-plugin-diff/edit/master/docs"},"defaultBase":"https://github.com/snowdreams1006/gitbook-plugin-diff/edit/master/docs"},"readmore":{"allowDomain":"localhost","blogId":"15702-1569305559839-744","name":"雪之梦技术驿站","qrcode":"https://snowdreams1006.github.io/snowdreams1006-wechat-public.jpeg","keyword":"vip"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"favicon-absolute":{"appleTouchIconMore":{"120x120":"/apple-touch-icon-120.png","180x180":"/apple-touch-icon-180.png"},"appleTouchIconPrecomposed152":"/apple-touch-icon-precomposed-152.png","appleTouchIconPrecomposedMore":{"120x120":"/apple-touch-icon-precomposed-120.png","180x180":"/apple-touch-icon-precomposed-180.png"},"favicon":"/favicon.ico","bookmark":"/bookmark.ico","appleTouchIcon152":"/apple-touch-icon-152.png"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"icp":{"link":"http://www.beian.miit.gov.cn/","style":{},"number":"浙ICP备18042346号"},"github-buttons":{"buttons":[{"user":"snowdreams1006","repo":"gitbook-plugin-icp","type":"star","size":"small"}]},"mygitalk":{"flipMoveOptions":{},"clientID":"3f62415a283d19cbd696","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["snowdreams1006"],"createIssueManually":false,"distractionFreeMode":false,"repo":"gitbook-plugin-diff","owner":"snowdreams1006","enableHotKey":true,"clientSecret":"aed0e1db0620bf5d0e3a3f0225f801997ad74e58","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"snowdreams1006","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"diff docs","language":"en","links":{"sidebar":{"blog":"https://snowdreams1006.tech/"}},"gitbook":"*","description":"gitbook-plugin-diff docs"},"file":{"path":"README.md","mtime":"2020-03-14T09:27:25.542Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-14T09:42:13.749Z"},"basePath":".","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"gitbook-official","level":"1.2","depth":1,"url":"https://snowdreams1006.github.io/gitbook-official/","ref":"https://snowdreams1006.github.io/gitbook-official/","articles":[]},"dir":"ltr"},"config":{"plugins":["favicon-absolute","github-buttons","edit-link-plus","readmore","copyright","mygitalk","icp","diff"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"diff":{"method":"diffLines","options":{},"number":"浙ICP备18042346号"},"copyright":{"site":"https://snowdreams1006.github.io/gitbook-plugin-diff","author":"snowdreams1006","website":"snowdreams1006.tech","image":"https://snowdreams1006.github.io/snowdreams1006-wechat-open.png"},"search":{},"edit-link-plus":{"label":"Edit This Page","base":{"snowdreams1006.github.io":"https://github.com/snowdreams1006/gitbook-plugin-diff/edit/master/docs","snowdreams1006.gitlab.io":"https://gitlab.com/snowdreams1006/gitbook-plugin-diff/edit/master/docs","snowdreams1006.gitee.io":"https://gitee.com/snowdreams1006/gitbook-plugin-diff/edit/master/docs"},"defaultBase":"https://github.com/snowdreams1006/gitbook-plugin-diff/edit/master/docs"},"readmore":{"allowDomain":"localhost","blogId":"15702-1569305559839-744","name":"雪之梦技术驿站","qrcode":"https://snowdreams1006.github.io/snowdreams1006-wechat-public.jpeg","keyword":"vip"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"favicon-absolute":{"appleTouchIconMore":{"120x120":"/apple-touch-icon-120.png","180x180":"/apple-touch-icon-180.png"},"appleTouchIconPrecomposed152":"/apple-touch-icon-precomposed-152.png","appleTouchIconPrecomposedMore":{"120x120":"/apple-touch-icon-precomposed-120.png","180x180":"/apple-touch-icon-precomposed-180.png"},"favicon":"/favicon.ico","bookmark":"/bookmark.ico","appleTouchIcon152":"/apple-touch-icon-152.png"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"icp":{"link":"http://www.beian.miit.gov.cn/","style":{},"number":"浙ICP备18042346号"},"github-buttons":{"buttons":[{"user":"snowdreams1006","repo":"gitbook-plugin-icp","type":"star","size":"small"}]},"mygitalk":{"flipMoveOptions":{},"clientID":"3f62415a283d19cbd696","number":-1,"perPage":10,"proxy":"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token","admin":["snowdreams1006"],"createIssueManually":false,"distractionFreeMode":false,"repo":"gitbook-plugin-diff","owner":"snowdreams1006","enableHotKey":true,"clientSecret":"aed0e1db0620bf5d0e3a3f0225f801997ad74e58","pagerDirection":"last","labels":["Gitalk"]},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"snowdreams1006","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"diff docs","language":"en","links":{"sidebar":{"blog":"https://snowdreams1006.tech/"}},"gitbook":"*","description":"gitbook-plugin-diff docs"},"file":{"path":"README.md","mtime":"2020-03-19T13:57:26.259Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-19T16:46:11.821Z"},"basePath":".","book":{"language":"en"}});
         });
     </script>
 </div>
