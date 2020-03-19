@@ -12,7 +12,7 @@
 
 > 在 markdown 文档中显示代码之间的差异的 Gitbook 插件
 
-[中文](./README_zh.md) | [English](./README.md)
+[English](./README.md) | [中文](./README_zh.md)
 
 ### 🏠 [主页](https://github.com/snowdreams1006/gitbook-plugin-diff#readme)
 
@@ -598,7 +598,7 @@ npm install gitbook-plugin-diff
 gitbook serve
 ```
 
-## 例子
+## 示例
 
 - 官方文档配置文件
 
@@ -687,7 +687,7 @@ gitbook serve
 
 欢迎贡献，问题和功能要求！随时检查[问题页面](https://github.com/snowdreams1006/gitbook-plugin-diff/issues) 。
 
-## 表示支持
+## 支持
 
 如果这个项目对您有帮助，请给个[星星](https://github.com/snowdreams1006/gitbook-plugin-diff) ！
 
