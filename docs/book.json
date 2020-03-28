@@ -65,8 +65,8 @@
             "copyProtect": false
         },
         "mygitalk": {
-            "clientID": "3f62415a283d19cbd696",
-            "clientSecret": "aed0e1db0620bf5d0e3a3f0225f801997ad74e58",
+            "clientID": "b41f45e89afe86e4782f",
+            "clientSecret": "50efaa46056c41abbdc7537cd09061677d02c0af",
             "repo": "gitbook-plugin-diff",
             "owner": "snowdreams1006",
             "admin": ["snowdreams1006"],
