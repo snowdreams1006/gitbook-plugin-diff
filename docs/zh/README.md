@@ -79,12 +79,19 @@
 ```json
 "gitbook": {
     "properties": {
+        "type": {
+            "type": "string",
+            "title": "render type",
+            "required": false,
+            "default": "markdown",
+            "description": "some supported methods such as markdown or console or html"
+        },
         "method": {
             "type": "string",
             "title": "jsdiff api method",
             "required": false,
-            "default": "diffLines",
-            "description": "some supported methods such as diffChars or diffWords or diffWordsWithSpace or diffLines or diffTrimmedLines or diffSentences or diffCss or diffJson or diffArrays"
+            "default": "diffChars",
+            "description": "some supported methods such as diffChars or diffWords or diffWordsWithSpace or diffLines or diffTrimmedLines or diffSentences or diffJson or diffArrays"
         },
         "options": {
             "type": "object",
@@ -374,56 +381,6 @@ what
 beep boob blah
 the cat is palying with cat
 who
-```
-{% enddiff %}
-
-#### `Diff.diffCss(oldStr, newStr[, options])`
-
-> 比较两个文本块，比较CSS标记。
-
-**返回**
-
-返回更改对象列表（请参见下文）。
-
-**示例**
-
-- 用法
-
-> 设置`method="diffCss"`来调用`Diff.diffCss(oldStr, newStr[, options])`方法
-
-````markdown
-{% diff method="diffCss" %}
-```css
-.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
-    margin-top: 1.275em;
-    margin-bottom: .85em;
-    font-weight: 700;
-}
-```
-```css
-.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
-    margin-top: 1.5em;
-    margin-bottom: 1em;
-}
-```
-{% enddiff %}
-````
-
-- 预览
-
-{% diff method="diffCss" %}
-```css
-.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
-    margin-top: 1.275em;
-    margin-bottom: .85em;
-    font-weight: 700;
-}
-```
-```css
-.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
-    margin-top: 1.5em;
-    margin-bottom: 1em;
-}
 ```
 {% enddiff %}
 

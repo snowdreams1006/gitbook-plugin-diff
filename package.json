@@ -20,12 +20,19 @@
     ],
     "gitbook": {
         "properties": {
+            "type": {
+                "type": "string",
+                "title": "render type",
+                "required": false,
+                "default": "markdown",
+                "description": "some supported methods such as markdown or console or html"
+            },
             "method": {
                 "type": "string",
                 "title": "jsdiff api method",
                 "required": false,
-                "default": "diffLines",
-                "description": "some supported methods such as diffChars or diffWords or diffWordsWithSpace or diffLines or diffTrimmedLines or diffSentences or diffCss or diffJson or diffArrays"
+                "default": "diffChars",
+                "description": "some supported methods such as diffChars or diffWords or diffWordsWithSpace or diffLines or diffTrimmedLines or diffSentences or diffJson or diffArrays"
             },
             "options": {
                 "type": "object",
@@ -45,9 +52,7 @@
     },
     "homepage": "https://github.com/snowdreams1006/gitbook-plugin-diff#readme",
     "dependencies": {
-        "diff": "^4.0.2"
-    },
-    "devDependencies": {
+        "diff": "^4.0.2",
         "colors": "^1.4.0"
     }
 }

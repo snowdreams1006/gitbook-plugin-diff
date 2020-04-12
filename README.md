@@ -74,12 +74,19 @@ In addition, the supported configuration options are as follows :
 ```json
 "gitbook": {
     "properties": {
+        "type": {
+            "type": "string",
+            "title": "render type",
+            "required": false,
+            "default": "markdown",
+            "description": "some supported methods such as markdown or console or html"
+        },
         "method": {
             "type": "string",
             "title": "jsdiff api method",
             "required": false,
-            "default": "diffLines",
-            "description": "some supported methods such as diffChars or diffWords or diffWordsWithSpace or diffLines or diffTrimmedLines or diffSentences or diffCss or diffJson or diffArrays"
+            "default": "diffChars",
+            "description": "some supported methods such as diffChars or diffWords or diffWordsWithSpace or diffLines or diffTrimmedLines or diffSentences or diffJson or diffArrays"
         },
         "options": {
             "type": "object",
@@ -356,56 +363,6 @@ who
 + beep boob blah
   the cat is palying with cat
   who
-```
-
-#### `Diff.diffCss(oldStr, newStr[, options])`
-
-> diffs two blocks of text, comparing CSS tokens.
-
-**Return**
-
-Returns a list of change objects (See below).
-
-**Examples**
-
-- usage 
-
-> set `method="diffCss"` to call `Diff.diffCss(oldStr, newStr[, options])` method
-
-````markdown
-{% diff method="diffCss" %}
-```css
-.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
-    margin-top: 1.275em;
-    margin-bottom: .85em;
-    font-weight: 700;
-}
-```
-```css
-.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
-    margin-top: 1.5em;
-    margin-bottom: 1em;
-}
-```
-{% enddiff %}
-````
-
-- preview 
-
-```diff
-  .markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6 {
-    margin-top: 
-- 1.275em
-+ 1.5em
-  ;
-    margin-bottom: 
-- .85em
-+ 1em
-  ;
-- 
-    font-weight: 700;
-
-}
 ```
 
 #### `Diff.diffJson(oldObj, newObj[, options])`
