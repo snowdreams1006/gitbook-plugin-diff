@@ -26,9 +26,6 @@
                 "120x120": "/apple-touch-icon-precomposed-120.png",
                 "180x180": "/apple-touch-icon-precomposed-180.png"
             }
-        },
-        "diff": {
-            "method": "diffJson"
         }
     }
 }

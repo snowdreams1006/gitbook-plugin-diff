@@ -12,7 +12,7 @@
         "favicon-absolute",
         "github-buttons",
         "edit-link-plus",
-        "copy-code-button",
+        "code",
         "readmore",
         "copyright",
         "mygitalk",
@@ -76,7 +76,7 @@
             "number": "浙ICP备18042346号"
         },
         "diff": {
-            "number": "浙ICP备18042346号"
+            "type": "makdown"
         }
     }
 }
