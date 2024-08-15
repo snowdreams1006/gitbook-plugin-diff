@@ -9,6 +9,7 @@
         }
     },
     "plugins": [
+        "last-update-time",
         "favicon-absolute",
         "code",
         "copyright",
