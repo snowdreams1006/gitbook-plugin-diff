@@ -12,14 +12,6 @@
 
 > A gitbook plugin for showing the differences between the codes within markdown
 
-[English](./README.md) | [中文](./README_zh.md)
-
-### 🏠 [Homepage](https://github.com/snowdreams1006/gitbook-plugin-diff#readme)
-
-- Github : [https://snowdreams1006.github.io/gitbook-plugin-diff/](https://snowdreams1006.github.io/gitbook-plugin-diff/)
-- GitLab: [https://snowdreams1006.gitlab.io/gitbook-plugin-diff/](https://snowdreams1006.gitlab.io/gitbook-plugin-diff/)
-- Gitee : [https://snowdreams1006.gitee.io/gitbook-plugin-diff/](https://snowdreams1006.gitee.io/gitbook-plugin-diff/)
-
 ## Screenshot
 
 - usage
@@ -495,36 +487,6 @@ gitbook serve
 
 ## Examples
 
-- Official documentation configuration file
-
-> [https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/docs/book.json](https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/docs/book.json)
-
-```json
-{
-    "plugins": ["diff"],
-    "pluginsConfig": {
-        "diff": {
-            "method": "diffJson"
-        }
-    }
-}
-```
-
-- Official example configuration file
-
-> [https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/example/book.json](https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/example/book.json)
-
-```json
-{
-    "plugins": ["diff"],
-    "pluginsConfig": {
-        "diff": {
-            "method": "diffJson"
-        }
-    }
-}
-```
-
 - Sample `book.json` file 
 
 ```json
@@ -585,6 +547,8 @@ Contributions, issues and feature requests are welcome! Feel free to check [issu
 ## Show your support
 
 Give a [Star](https://github.com/snowdreams1006/gitbook-plugin-diff) if this project helped you!
+
+![snowdreams1006-wechat-donate.jpg](https://snowdreams1006.github.io/snowdreams1006-wechat-donate.jpg)
 
 ## Copyright
 

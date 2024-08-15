@@ -12,12 +12,6 @@
 
 > A gitbook plugin for showing the differences between the codes within markdown
 
-### 🏠 [Homepage](https://github.com/snowdreams1006/gitbook-plugin-diff#readme)
-
-- Github : [https://snowdreams1006.github.io/gitbook-plugin-diff/](https://snowdreams1006.github.io/gitbook-plugin-diff/)
-- GitLab: [https://snowdreams1006.gitlab.io/gitbook-plugin-diff/](https://snowdreams1006.gitlab.io/gitbook-plugin-diff/)
-- Gitee : [https://snowdreams1006.gitee.io/gitbook-plugin-diff/](https://snowdreams1006.gitee.io/gitbook-plugin-diff/)
-
 ## Screenshot
 
 - usage
@@ -43,22 +37,15 @@
 
 - preview
 
-{% diff method="diffJson" %}
-```json
+```diff
 {
-  "name": "gitbook-plugin-diff",
-  "version": "0.2.1",
-  "description": "A gitBook plugin for generating and exporting mind map within markdown"
+-   "description": "A gitBook plugin for generating and exporting mind map within markdown",
+-   "name": "gitbook-plugin-simple-mind-map",
++   "description": "A gitbook plugin for showing the differences between the codes within markdown",
++   "name": "gitbook-plugin-diff",
+    "version": "0.2.1"
 }
 ```
-```json
-{
-  "name": "gitbook-plugin-diff",
-  "version": "0.2.1",
-  "description": "A gitbook plugin for showing the differences between the codes within markdown"
-}
-```
-{% enddiff %}
 
 ## Usage
 
@@ -153,14 +140,11 @@ cap
 
 - preview 
 
-{% diff method="diffChars" %}
-```js
-cat
+```diff
+  ca
+- t
++ p
 ```
-```js
-cap
-```
-{% enddiff %}
 
 #### `Diff.diffWords(oldStr, newStr[, options])`
 
@@ -183,7 +167,7 @@ Returns a list of change objects (See below).
 ````markdown
 {% diff method="diffWords" %}
 ```bash
-beep boop
+beep boop  
 ```
 ```bash
 beep boob blah
@@ -193,14 +177,13 @@ beep boob blah
 
 - preview 
 
-{% diff method="diffWords" %}
-```bash
-beep boop
+```diff
+  beep 
+- boop
++ boob
+
++ blah
 ```
-```bash
-beep boob blah
-```
-{% enddiff %}
 
 #### `Diff.diffWordsWithSpace(oldStr, newStr[, options])`
 
@@ -233,14 +216,11 @@ beep boob blah
 
 - preview 
 
-{% diff method="diffWordsWithSpace" %}
-```bash
-beep boop
+```diff
+  beep 
+- boop
++ boob blah
 ```
-```bash
-beep boob blah
-```
-{% enddiff %}
 
 #### `Diff.diffLines(oldStr, newStr[, options])`
 
@@ -278,18 +258,17 @@ who
 
 - preview 
 
-{% diff method="diffLines",options={"newlineIsToken":true} %}
-```bash
-beep boop
-the cat is palying with cap
-what
+```diff
+- beep boop
+
++ beep boob blah
+
+  the cat is palying with cap
+
+- what
+
++ who
 ```
-```bash
-beep boob blah
-the cat is palying with cap
-who
-```
-{% enddiff %}
 
 #### `Diff.diffTrimmedLines(oldStr, newStr[, options])`
 
@@ -327,18 +306,15 @@ who
 
 - preview 
 
-{% diff method="diffTrimmedLines",options={"newlineIsToken":true} %}
-```bash
-beep boop
-the cat is palying with cap
-what
+```diff
+- beep boop
+  the cat is palying with cap
+  what
+
++ beep boob blah
+  the cat is palying with cat
+  who
 ```
-```bash
-beep boob blah
-the cat is palying with cat
-who
-```
-{% enddiff %}
 
 #### `Diff.diffSentences(oldStr, newStr[, options])`
 
@@ -371,18 +347,15 @@ who
 
 - preview 
 
-{% diff method="diffSentences" %}
-```bash
-beep boop
-the cat is palying with cap
-what
+```diff
+- beep boop
+  the cat is palying with cap
+  what
+
++ beep boob blah
+  the cat is palying with cat
+  who
 ```
-```bash
-beep boob blah
-the cat is palying with cap
-who
-```
-{% enddiff %}
 
 #### `Diff.diffJson(oldObj, newObj[, options])`
 
@@ -419,22 +392,15 @@ Returns a list of change objects (See below).
 
 - preview 
 
-{% diff method="diffJson" %}
-```json
+```diff
 {
-  "name": "gitbook-plugin-simple-mind-map",
-  "version": "0.2.1",
-  "description": "A gitBook plugin for generating and exporting mind map within markdown"
+-   "description": "A gitBook plugin for generating and exporting mind map within markdown",
+-   "name": "gitbook-plugin-simple-mind-map",
++   "description": "A gitbook plugin for showing the differences between the codes within markdown",
++   "name": "gitbook-plugin-diff",
+    "version": "0.2.1"
 }
 ```
-```json
-{
-  "name": "gitbook-plugin-diff",
-  "version": "0.2.1",
-  "description": "A gitbook plugin for showing the differences between the codes within markdown"
-}
-```
-{% enddiff %}
 
 #### `Diff.diffArrays(oldArr, newArr[, options])`
 
@@ -484,31 +450,20 @@ Returns a list of change objects (See below).
 
 - preview 
 
-{% diff method="diffArrays" %}
-```json
+```diff
 [
-    "Vue",
-    "Python",
-    "Java",
-    "flutter",
-    "springboot",
-    "docker",
-    "React",
-    "小程序"
+-   Vue
+-   Python
++   Vuejs
++   Nodejs
+    Java
+    flutter
+    springboot
+    docker
+    React
+-   小程序
 ]
 ```
-```json
-[
-    "Vuejs",
-    "Nodejs",
-    "Java",
-    "flutter",
-    "springboot",
-    "docker",
-    "React"
-]
-```
-{% enddiff %}
 
 ### Step #3 - Run gitbook commands
 
@@ -531,36 +486,6 @@ gitbook serve
 ```
 
 ## Examples
-
-- Official documentation configuration file
-
-> [https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/docs/book.json](https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/docs/book.json)
-
-```json
-{
-    "plugins": ["diff"],
-    "pluginsConfig": {
-        "diff": {
-            "method": "diffJson"
-        }
-    }
-}
-```
-
-- Official example configuration file
-
-> [https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/example/book.json](https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/example/book.json)
-
-```json
-{
-    "plugins": ["diff"],
-    "pluginsConfig": {
-        "diff": {
-            "method": "diffJson"
-        }
-    }
-}
-```
 
 - Sample `book.json` file 
 
@@ -622,6 +547,8 @@ Contributions, issues and feature requests are welcome! Feel free to check [issu
 ## Show your support
 
 Give a [Star](https://github.com/snowdreams1006/gitbook-plugin-diff) if this project helped you!
+
+![snowdreams1006-wechat-donate.jpg](https://snowdreams1006.github.io/snowdreams1006-wechat-donate.jpg)
 
 ## Copyright
 

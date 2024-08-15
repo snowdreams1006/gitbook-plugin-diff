@@ -1,0 +1,16 @@
+{
+    "title": "diff example",
+    "author": "snowdreams1006",
+    "description": "gitbook-plugin-diff example",
+    "gitbook": "3.2.3",
+    "links": {
+        "sidebar": {
+            "blog": "https://snowdreams1006.tech/"
+        }
+    },
+    "plugins": [
+        "diff"
+    ],
+    "pluginsConfig": {
+    }
+}

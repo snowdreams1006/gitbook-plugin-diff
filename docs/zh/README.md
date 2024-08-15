@@ -7,16 +7,9 @@
 [![github:maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/snowdreams1006/gitbook-plugin-diff/graphs/commit-activity)
 [![npm:license](https://img.shields.io/npm/l/gitbook-plugin-diff.svg)](https://github.com/snowdreams1006/gitbook-plugin-diff/blob/master/LICENSE)
 [![github:snodreams1006](https://img.shields.io/badge/github-snowdreams1006-brightgreen.svg)](https://github.com/snowdreams1006)
-[![website:snodreams1006.tech](https://img.shields.io/badge/website-snowdreams1006.tech-brightgreen.svg)](https://snowdreams1006.tech/)
 [![微信公众号:雪之梦技术驿站-brightgreen.svg](https://img.shields.io/badge/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7-%E9%9B%AA%E4%B9%8B%E6%A2%A6%E6%8A%80%E6%9C%AF%E9%A9%BF%E7%AB%99-brightgreen.svg)](https://snowdreams1006.github.io/snowdreams1006-wechat-public.jpeg)
 
 > 在 markdown 文档中显示代码之间的差异的 Gitbook 插件
-
-### 🏠 [主页](https://github.com/snowdreams1006/gitbook-plugin-diff#readme)
-
-- Github : [https://snowdreams1006.github.io/gitbook-plugin-diff/](https://snowdreams1006.github.io/gitbook-plugin-diff/)
-- GitLab: [https://snowdreams1006.gitlab.io/gitbook-plugin-diff/](https://snowdreams1006.gitlab.io/gitbook-plugin-diff/)
-- Gitee : [https://snowdreams1006.gitee.io/gitbook-plugin-diff/](https://snowdreams1006.gitee.io/gitbook-plugin-diff/)
 
 ## 屏幕截图
 
@@ -43,22 +36,15 @@
 
 - 预览
 
-{% diff method="diffJson" %}
-```json
+```diff
 {
-  "name": "gitbook-plugin-simple-mind-map",
-  "version": "0.2.1",
-  "description": "A gitBook plugin for generating and exporting mind map within markdown"
+-   "description": "A gitBook plugin for generating and exporting mind map within markdown",
+-   "name": "gitbook-plugin-simple-mind-map",
++   "description": "A gitbook plugin for showing the differences between the codes within markdown",
++   "name": "gitbook-plugin-diff",
+    "version": "0.2.1"
 }
 ```
-```json
-{
-  "name": "gitbook-plugin-diff",
-  "version": "0.2.1",
-  "description": "A gitbook plugin for showing the differences between the codes within markdown"
-}
-```
-{% enddiff %}
 
 ## 用法
 
@@ -153,14 +139,11 @@ cap
 
 - 预览
 
-{% diff method="diffChars" %}
-```js
-cat
+```diff
+  ca
+- t
++ p
 ```
-```js
-cap
-```
-{% enddiff %}
 
 #### `Diff.diffWords(oldStr, newStr[, options])`
 
@@ -193,14 +176,13 @@ beep boob blah
 
 - 预览
 
-{% diff method="diffWords" %}
-```bash
-beep boop
+```diff
+  beep 
+- boop
++ boob
+
++ blah
 ```
-```bash
-beep boob blah
-```
-{% enddiff %}
 
 #### `Diff.diffWordsWithSpace(oldStr, newStr[, options])`
 
@@ -233,14 +215,11 @@ beep boob blah
 
 - 预览
 
-{% diff method="diffWordsWithSpace" %}
-```bash
-beep boop
+```diff
+  beep 
+- boop
++ boob blah
 ```
-```bash
-beep boob blah
-```
-{% enddiff %}
 
 #### `Diff.diffLines(oldStr, newStr[, options])`
 
@@ -278,18 +257,17 @@ who
 
 - 预览
 
-{% diff method="diffLines",options={"newlineIsToken":true} %}
-```bash
-beep boop
-the cat is palying with cap
-what
+```diff
+- beep boop
+
++ beep boob blah
+
+  the cat is palying with cap
+
+- what
+
++ who
 ```
-```bash
-beep boob blah
-the cat is palying with cap
-who
-```
-{% enddiff %}
 
 #### `Diff.diffTrimmedLines(oldStr, newStr[, options])`
 
@@ -327,18 +305,15 @@ who
 
 - 预览
 
-{% diff method="diffTrimmedLines",options={"newlineIsToken":true} %}
-```bash
-beep boop
-the cat is palying with cap
-what
+```diff
+- beep boop
+  the cat is palying with cap
+  what
+
++ beep boob blah
+  the cat is palying with cat
+  who
 ```
-```bash
-beep boob blah
-the cat is palying with cat
-who
-```
-{% enddiff %}
 
 #### `Diff.diffSentences(oldStr, newStr[, options])`
 
@@ -371,18 +346,15 @@ who
 
 - 预览
 
-{% diff method="diffSentences" %}
-```bash
-beep boop
-the cat is palying with cap
-what
+```diff
+- beep boop
+  the cat is palying with cap
+  what
+
++ beep boob blah
+  the cat is palying with cat
+  who
 ```
-```bash
-beep boob blah
-the cat is palying with cat
-who
-```
-{% enddiff %}
 
 #### `Diff.diffJson(oldObj, newObj[, options])`
 
@@ -419,22 +391,15 @@ who
 
 - 预览
 
-{% diff method="diffJson" %}
-```json
+```diff
 {
-  "name": "gitbook-plugin-simple-mind-map",
-  "version": "0.2.1",
-  "description": "A gitBook plugin for generating and exporting mind map within markdown"
+-   "description": "A gitBook plugin for generating and exporting mind map within markdown",
+-   "name": "gitbook-plugin-simple-mind-map",
++   "description": "A gitbook plugin for showing the differences between the codes within markdown",
++   "name": "gitbook-plugin-diff",
+    "version": "0.2.1"
 }
 ```
-```json
-{
-  "name": "gitbook-plugin-diff",
-  "version": "0.2.1",
-  "description": "A gitbook plugin for showing the differences between the codes within markdown"
-}
-```
-{% enddiff %}
 
 #### `Diff.diffArrays(oldArr, newArr[, options])`
 
@@ -484,31 +449,20 @@ who
 
 - 预览
 
-{% diff method="diffArrays" %}
-```json
+```diff
 [
-    "Vue",
-    "Python",
-    "Java",
-    "flutter",
-    "springboot",
-    "docker",
-    "React",
-    "小程序"
+-   Vue
+-   Python
++   Vuejs
++   Nodejs
+    Java
+    flutter
+    springboot
+    docker
+    React
+-   小程序
 ]
 ```
-```json
-[
-    "Vuejs",
-    "Nodejs",
-    "Java",
-    "flutter",
-    "springboot",
-    "docker",
-    "React"
-]
-```
-{% enddiff %}
 
 ### 步骤＃3- 运行 `gitbook` 命令
 
@@ -624,6 +578,8 @@ gitbook serve
 ## 支持
 
 如果这个项目对您有帮助，请给个[星星](https://github.com/snowdreams1006/gitbook-plugin-diff) ！
+
+![snowdreams1006-wechat-donate.jpg](https://snowdreams1006.github.io/snowdreams1006-wechat-donate.jpg)
 
 ## 版权
 
